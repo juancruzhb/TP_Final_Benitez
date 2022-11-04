@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sector.cs" />
     <Compile Include="Ticket.cs" />
+    <Compile Include="TicketRespuesta.cs" />
     <Compile Include="Tipo.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
