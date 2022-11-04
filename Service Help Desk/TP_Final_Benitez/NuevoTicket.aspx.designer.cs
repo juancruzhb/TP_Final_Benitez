@@ -51,13 +51,13 @@ namespace TP_Final_Benitez
         protected global::System.Web.UI.WebControls.Label lblTipo;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlCategorias control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategorias;
 
         /// <summary>
         /// lblPrioridad control.
@@ -69,13 +69,13 @@ namespace TP_Final_Benitez
         protected global::System.Web.UI.WebControls.Label lblPrioridad;
 
         /// <summary>
-        /// DropDownList2 control.
+        /// ddlPrioridades control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPrioridades;
 
         /// <summary>
         /// lblDescripcion control.

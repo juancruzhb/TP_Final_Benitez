@@ -18,20 +18,11 @@
                     <asp:TextBox ID="txtAsunto" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:Label ID="lblTipo" CssClass="form-label" runat="server" Text="Tipo de Problema"></asp:Label>
                     <div>
-                        <asp:DropDownList ID="DropDownList1" runat="server">
-                            <asp:ListItem Text="Prueba1" />
-                            <asp:ListItem Text="Prueba2" />
-                            <asp:ListItem Text="Prueba3" />
-                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlCategorias" runat="server"></asp:DropDownList>
                     </div>
                     <asp:Label ID="lblPrioridad" CssClass="form-label" runat="server" Text="Prioridad"></asp:Label>
                     <div>
-                        <asp:DropDownList ID="DropDownList2" runat="server">
-                            <asp:ListItem Text="Bajo" />
-                            <asp:ListItem Text="Medio" />
-                            <asp:ListItem Text="Alto" />
-                            <asp:ListItem Text="Urgente" />
-                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlPrioridades" runat="server"> </asp:DropDownList>
                     </div>
                 </div>
                 <div class="mb-3">

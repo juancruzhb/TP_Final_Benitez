@@ -1,5 +1,7 @@
 CREATE DATABASE HelpDesk_DB
 
+go
+
 USE HelpDesk_DB
 
 CREATE TABLE Categorias(
