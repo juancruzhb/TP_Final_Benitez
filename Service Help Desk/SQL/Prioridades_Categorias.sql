@@ -14,3 +14,9 @@ INSERT INTO Prioridades(Nombre, Activo) VALUES
 ('Medio',1),
 ('Alto',1),
 ('Urgente',1)
+
+INSERT INTO Estados(Nombre) VALUES
+('Abierto'),
+('Cerrado'),
+('Resuelto'),
+('Pendiente')
