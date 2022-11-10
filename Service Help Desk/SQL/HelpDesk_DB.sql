@@ -34,4 +34,14 @@ CREATE TABLE Tickets(
 	FechaCreacion date,
 	IdEstado int not null
 )
+GO
+
+CREATE TABLE Usuarios(
+	Id bigint not null primary key identity(1,1),
+	Nombre varchar(50) not null,
+	Apellido varchar(50) not null,
+	Email varchar(100) not null,
+	Contraseña varchar(20) not null,
+)
+
 

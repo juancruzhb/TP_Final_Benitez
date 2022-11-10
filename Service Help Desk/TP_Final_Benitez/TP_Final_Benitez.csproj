@@ -68,6 +68,8 @@
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Registrarse.aspx" />
+    <Content Include="Styles\login.css" />
     <Content Include="Web.config" />
     <Content Include="NuevoTicket.aspx" />
   </ItemGroup>
@@ -103,6 +105,13 @@
     </Compile>
     <Compile Include="NuevoTicket.aspx.designer.cs">
       <DependentUpon>NuevoTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registrarse.aspx.cs">
+      <DependentUpon>Registrarse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrarse.aspx.designer.cs">
+      <DependentUpon>Registrarse.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
