@@ -15,30 +15,30 @@
                 <h2 class="text-center">Registrate con nosotros</h2>
                 <div>
                     <asp:Label Text="Nombre" CssClass="form-label" runat="server" />
-                    <asp:TextBox CssClass="form-control" runat="server" />
+                    <asp:TextBox CssClass="form-control" runat="server" ID="txtNombre"/>
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Apellido" CssClass="form-label" runat="server" />
-                    <asp:TextBox CssClass="form-control" runat="server" />
+                    <asp:TextBox CssClass="form-control" runat="server" ID="txtApellido"/>
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Celular" CssClass="form-label" runat="server" />
-                    <asp:TextBox CssClass="form-control" runat="server" />
+                    <asp:TextBox CssClass="form-control" runat="server" ID="txtCelular"/>
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Correo Electronico" CssClass="form-label" runat="server" />
-                    <asp:TextBox CssClass="form-control" placeholder="sucorreo@correo.com" runat="server" />
+                    <asp:TextBox CssClass="form-control" ID="txtCorreo" placeholder="sucorreo@correo.com" runat="server" />
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Contraseña" CssClass="form-label" runat="server" />
-                    <asp:TextBox CssClass="form-control" runat="server" />
+                    <asp:TextBox CssClass="form-control" ID="txtPass" runat="server" />
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Repita su contraseña" CssClass="form-label"    runat="server" />
-                    <asp:TextBox CssClass="form-control" runat="server" />
+                    <asp:TextBox CssClass="form-control" runat="server" txt="txtConfirmaPass"/>
                 </div>
                 <div class="text-center">
-                    <asp:Button Text="Confirmar" runat="server" CssClass="btn btn-primary" ID="btnConfirmarRegistro" />
+                    <asp:Button Text="Confirmar" runat="server" CssClass="btn btn-primary" ID="btnConfirmarRegistro"  OnClick="btnConfirmarRegistro_Click" />
                     <asp:Button Text="Cancelar" runat="server" CssClass="btn btn-primary" />
                 </div>
             </div>
