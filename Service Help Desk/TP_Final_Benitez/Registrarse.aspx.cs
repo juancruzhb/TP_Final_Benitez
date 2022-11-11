@@ -18,22 +18,35 @@ namespace TP_Final_Benitez
 
         protected void btnConfirmarRegistro_Click(object sender, EventArgs e)
         {
-            try
+            if (txtApellido.Text == null || txtApellido.Text == "" || txtNombre.Text == null || txtNombre.Text == "" || txtCorreo.Text == null || txtCorreo.Text == "" || txtPass.Text == null || txtPass.Text == "" || txtConfirmaPass.Text == null || txtConfirmaPass.Text == "")
+
             {
-                Usuario user = new Usuario();
-                UsuarioNegocio negocio = new UsuarioNegocio();
+                lblRequerido.Text = "TODOS LOS CAMPOS SON REQUIRIDOS";
 
-                user.Apellido = txtApellido.Text;
-                user.Nombre = txtNombre.Text;
-                user.Email = txtCorreo.Text;
-                user.Password = txtPass.Text;
-               int id = negocio.insertarNuevo(user);
-
+            }else if(txtPass.Text != txtConfirmaPass.Text)
+            {
+                lblRequerido.Text = "LAS CONTRASEÑAS NO COINCIDEN";
             }
-            catch (Exception ex)
+            else
             {
+                lblRequerido.Text = "";
+                try
+                {
+                    Usuario user = new Usuario();
+                    UsuarioNegocio negocio = new UsuarioNegocio();
 
-                Session.Add("error",ex.ToString());
+                    user.Apellido = txtApellido.Text;
+                    user.Nombre = txtNombre.Text;
+                    user.Email = txtCorreo.Text;
+                    user.Password = txtPass.Text;
+                   int id = negocio.insertarNuevo(user);
+
+                }
+                catch (Exception ex)
+                {
+
+                    Session.Add("error",ex.ToString());
+                }
             }
 
         }

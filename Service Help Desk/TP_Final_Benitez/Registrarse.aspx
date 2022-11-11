@@ -13,6 +13,7 @@
         <div class="row registro">
             <div >
                 <h2 class="text-center">Registrate con nosotros</h2>
+                <asp:Label ID="lblRequerido" ForeColor="Red" Text="" runat="server" />
                 <div>
                     <asp:Label Text="Nombre" CssClass="form-label" runat="server" />
                     <asp:TextBox CssClass="form-control" runat="server" ID="txtNombre"/>
@@ -35,7 +36,7 @@
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Repita su contraseña" CssClass="form-label"    runat="server" />
-                    <asp:TextBox CssClass="form-control" TextMode ="Password" runat="server" txt="txtConfirmaPass"/>
+                    <asp:TextBox CssClass="form-control" TextMode ="Password" runat="server" Id="txtConfirmaPass"/>
                 </div>
                 <div class="text-center">
                     <asp:Button Text="Confirmar" runat="server" CssClass="btn btn-primary" ID="btnConfirmarRegistro"  OnClick="btnConfirmarRegistro_Click" />
