@@ -17,7 +17,6 @@ CREATE PROCEDURE sp_InsertarUsuario
 @Email varchar(100),
 @Contraseña varchar(20)
 AS
-insert into Usuarios (Nombre, Apellido, Email, Contraseña)
+insert into Usuarios (Nombre, Apellido, Email, Contraseña) output inserted.Id
 values (@Nombre, @Apellido, @Email, @Contraseña)
 go;
-
