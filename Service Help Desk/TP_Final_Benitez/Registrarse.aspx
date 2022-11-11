@@ -31,15 +31,15 @@
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Contraseña" CssClass="form-label" runat="server" />
-                    <asp:TextBox CssClass="form-control" ID="txtPass" runat="server" />
+                    <asp:TextBox TextMode="Password" CssClass="form-control" ID="txtPass" runat="server" />
                 </div>
                 <div class="mb-3">
                     <asp:Label Text="Repita su contraseña" CssClass="form-label"    runat="server" />
-                    <asp:TextBox CssClass="form-control" runat="server" txt="txtConfirmaPass"/>
+                    <asp:TextBox CssClass="form-control" TextMode ="Password" runat="server" txt="txtConfirmaPass"/>
                 </div>
                 <div class="text-center">
                     <asp:Button Text="Confirmar" runat="server" CssClass="btn btn-primary" ID="btnConfirmarRegistro"  OnClick="btnConfirmarRegistro_Click" />
-                    <asp:Button Text="Cancelar" runat="server" CssClass="btn btn-primary" />
+                    <a href="Login.aspx" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
         </div>

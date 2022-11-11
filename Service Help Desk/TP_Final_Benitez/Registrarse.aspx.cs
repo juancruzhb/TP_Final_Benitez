@@ -28,7 +28,6 @@ namespace TP_Final_Benitez
                 user.Email = txtCorreo.Text;
                 user.Password = txtPass.Text;
                int id = negocio.insertarNuevo(user);
-                
 
             }
             catch (Exception ex)

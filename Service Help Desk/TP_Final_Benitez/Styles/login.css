@@ -1,12 +1,9 @@
-﻿*{
-    box-sizing:border-box;
+﻿* {
+    box-sizing: border-box;
 }
 
-.container{
-    display:flex;
-    justify-content: center;
 
-}
+
 .registro{
     width:60%;
     margin-top: 100px;
@@ -19,4 +16,44 @@
 .trans{
     display:flex;
     justify-content:center;
+}
+.flex-container {
+    display: flex;
+    text-align:center;
+    margin-left:20px;
+    margin-right: 20px;
+}
+
+.flex-child1 {
+    flex:1.5;
+    border: 2px solid grey;
+    height:400px;
+    justify-content:center;
+    padding:100px;
+    margin-right:5px;
+}
+
+
+.flex-child2 {
+    flex:1;
+    border: 2px solid grey;
+    margin-right: 20px;
+    padding:100px;
+    margin-left:5px;
+} 
+
+.title{
+    display:inline;
+}
+nav{
+    display:inline;
+}
+.bienvenido{
+    justify-content:end
+}
+#txtEmail{
+    margin-bottom:10px;
+}
+#txtPass{
+    margin-bottom:10px
 }

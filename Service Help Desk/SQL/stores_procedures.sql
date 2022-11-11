@@ -20,3 +20,5 @@ AS
 insert into Usuarios (Nombre, Apellido, Email, Contraseña) output inserted.Id
 values (@Nombre, @Apellido, @Email, @Contraseña)
 go;
+
+exec sp_InsertarUsuario 'Benitez', 'Juan Cruz', 'bhjuancruz@gmail.com', 'admin'
