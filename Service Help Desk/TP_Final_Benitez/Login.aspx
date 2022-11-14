@@ -31,7 +31,7 @@
                 <div>
                     <asp:TextBox TextMode ="Password" ID="txtPass" runat="server"></asp:TextBox>
                     <div>
-                        <asp:Button Text="Login" CssClass="btn btn-primary" runat="server" ID="btnLogin" OnClick="btnLogin_Click" />
+                        <asp:Button Text="Login" CssClass="btn btn-primary" runat="server"  ID="btnLogin" OnClick="btnLogin_Click" />
                     </div>
                 </div>
             </div>

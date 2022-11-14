@@ -12,15 +12,18 @@ namespace TP_Final_Benitez
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario aux = new Usuario();
+            int id = 0;
             if (Session["usuario"] == null)
             {
                 Session.Add("error", "Debes estar logueado para enviar acceder al menú");
                 Response.Redirect("Error.aspx");
             }
+            aux = (Usuario)Session["usuario"];  
 
             List<Ticket> tickets = new List<Ticket>();
             TicketNegocio negocio = new TicketNegocio();
-            tickets = negocio.listar();
+            tickets = negocio.listar(aux.IdUsuario);
 
             dvTickets.DataSource = tickets;
             dvTickets.DataBind();

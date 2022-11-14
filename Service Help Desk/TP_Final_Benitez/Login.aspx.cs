@@ -28,7 +28,7 @@ namespace TP_Final_Benitez
 
                 if (negocio.Loguear(usuario))
                 {
-                   aux = negocio.ObtenerUsuario(usuario);
+                    aux = negocio.ObtenerUsuario(usuario);
                     Session.Add("usuario", aux);
                     Response.Redirect("MenuUsuario.aspx",false);
 

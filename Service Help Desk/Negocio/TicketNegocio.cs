@@ -62,7 +62,7 @@ namespace Negocio
                 }
                 else
                 {
-                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular from Tickets where Id = @Id");
+                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular from Tickets where Idusuario = @Id");
                     datos.setearParametros("@Id", id);
                 }
                 datos.ejecutarReader();
