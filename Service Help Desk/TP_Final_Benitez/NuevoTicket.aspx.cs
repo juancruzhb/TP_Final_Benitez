@@ -72,7 +72,10 @@ namespace TP_Final_Benitez
                 nuevo.oPrioridad = listaPrioridades.Find(x => x.IdPrioridad.Equals(int.Parse(ddlPrioridades.SelectedValue)));
                 nuevo.oCategoria = listaCategorias.Find(x => x.IdCategoria.Equals(int.Parse(ddlCategorias.SelectedValue)));
 
-                tNegocio.InsertarNuevo(nuevo);
+                if (tNegocio.InsertarNuevo(nuevo) >0)
+                {
+                    Response.Redirect("TicketSuccess.aspx", false);
+                }
                 
             }
 

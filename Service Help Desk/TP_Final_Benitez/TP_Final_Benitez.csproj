@@ -73,6 +73,7 @@
     <Content Include="Registrarse.aspx" />
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\login.css" />
+    <Content Include="TicketSuccess.aspx" />
     <Content Include="Web.config" />
     <Content Include="NuevoTicket.aspx" />
   </ItemGroup>
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="Registrarse.aspx.designer.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TicketSuccess.aspx.cs">
+      <DependentUpon>TicketSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketSuccess.aspx.designer.cs">
+      <DependentUpon>TicketSuccess.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

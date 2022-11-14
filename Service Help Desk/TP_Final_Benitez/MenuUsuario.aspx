@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -34,6 +34,21 @@
                     </div>
                 </nav>
             </header>
+            <asp:GridView AutoGenerateColumns="false" CssClass="table" runat="server" ID="dvTickets">
+                <Columns>
+                    <asp:BoundField HeaderText="Ticket Numero" DataField="TicketId" />
+                    <asp:BoundField HeaderText="Fecha Creacion" DataField="FechaCreacion" />
+                    <asp:BoundField HeaderText="Asunto" DataField="Asunto" />
+                    <asp:BoundField HeaderText="Estado" DataField="Estado.Nombre" />
+                    <asp:BoundField HeaderText="Categoria" DataField="oCategoria.Nombre" />
+                    <asp:BoundField HeaderText="Prioridad" DataField="oPrioridad.Nombre" />
+                    <asp:TemplateField>
+                        <itemtemplate>
+                            <asp:LinkButton Text="Ver" ID="btnVer" CssClass="btn btn-primary" runat="server" />
+                        </itemtemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </div>
     </form>
 </body>

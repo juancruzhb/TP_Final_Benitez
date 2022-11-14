@@ -38,7 +38,64 @@ namespace Negocio
 
         }
 
+        public List<Ticket> listar(int id = 0)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Ticket> tickets = new List<Ticket>();
+            List<Categoria> categorias = new List<Categoria>();
+            List<Prioridad> prioridades = new List<Prioridad>();
+            List<Estado> estados = new List<Estado>();
+            EstadoNegocio eNegocio = new EstadoNegocio();
+            CategoriaNegocio cNegocio = new CategoriaNegocio();
+            PrioridadNegocio pNegocio = new PrioridadNegocio();
 
+            categorias = cNegocio.listar();
+            prioridades = pNegocio.listar();
+            estados = eNegocio.listar();
+
+            try
+            {
+                if(id == 0)
+                {
+                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular from Tickets");
+
+                }
+                else
+                {
+                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular from Tickets where Id = @Id");
+                    datos.setearParametros("@Id", id);
+                }
+                datos.ejecutarReader();
+
+                while (datos.Reader.Read())
+                {
+                    tickets.Add(new Ticket
+                    {
+                        TicketID = (int)datos.Reader["Id"],
+                        Asunto = datos.Reader["Asunto"].ToString(),
+                        Mensaje = datos.Reader["Mensaje"].ToString(),
+                        FechaCreacion = (DateTime)datos.Reader["FechaCreacion"],
+                        Contacto = datos.Reader["Celular"].ToString(),
+                        oCategoria = categorias.Find(x => x.IdCategoria.Equals((int)datos.Reader["IdCategoria"])),
+                        oPrioridad = prioridades.Find(x => x.IdPrioridad.Equals((int)datos.Reader["IdPrioridad"])),
+                         Estado= estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"]))
+
+                    });
+                }
+                return tickets;
+
+                
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.close(); }
+        }
 
     }
+
+     
 }
