@@ -13,6 +13,5 @@ namespace Dominio
         public int TicketId { get; set; }
         public string Respuesta { get; set; }
         public DateTime Fecha { get; set; }
-        public bool Estado { get; set; }
     }
 }

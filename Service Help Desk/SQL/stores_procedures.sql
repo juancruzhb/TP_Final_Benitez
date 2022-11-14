@@ -21,4 +21,19 @@ insert into Usuarios (Nombre, Apellido, Email, Contraseña) output inserted.Id
 values (@Nombre, @Apellido, @Email, @Contraseña)
 go;
 
-exec sp_InsertarUsuario 'Benitez', 'Juan Cruz', 'bhjuancruz@gmail.com', 'admin'
+CREATE PROCEDURE sp_InsertarTicket
+@Asunto varchar(200),
+@Mensaje varchar(2000),
+@IdCategoria int,
+@IdPrioridad int,
+@FechaCreacion datetime,
+@IdEstado int,
+@IdUsuario int,
+@Celular varchar(20)
+AS
+INSERT INTO Tickets(Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular) 
+OUTPUT inserted.Id
+VALUES(@Asunto, @Mensaje, @IdCategoria, @IdPrioridad, @FechaCreacion, @IdEstado, @IdUsuario, @Celular)
+go;
+
+drop procedure sp_InsertarTicket

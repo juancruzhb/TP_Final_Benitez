@@ -39,7 +39,7 @@ namespace TP_Final_Benitez
                     user.Nombre = txtNombre.Text;
                     user.Email = txtCorreo.Text;
                     user.Password = txtPass.Text;
-                   int id = negocio.insertarNuevo(user);
+                   int id = negocio.InsertarNuevo(user);
 
                 }
                 catch (Exception ex)

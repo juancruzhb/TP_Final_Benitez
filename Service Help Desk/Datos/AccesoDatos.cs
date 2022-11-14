@@ -45,7 +45,7 @@ namespace Datos
             }
         }
 
-        public void ejecutarAccion()
+        public void ejecutarQuery()
         {
             cmd.Connection = conexion;
             try
@@ -109,6 +109,7 @@ namespace Datos
 
         public void ejecutarConsulta()
         {
+            cmd.Connection = conexion;
             try
             {
                 cmd.Connection = conexion;

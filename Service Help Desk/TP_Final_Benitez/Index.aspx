@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <h1>LOGUEADO CORRECTAMENTE</h1>
         </div>
     </form>
 </body>

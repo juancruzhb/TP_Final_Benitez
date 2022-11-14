@@ -17,6 +17,12 @@ namespace TP_Final_Benitez
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["Usuario"] == null)
+            {
+                Session.Add("error", "Debes estar logueado para ingresar");
+                Response.Redirect("Error.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
                 CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -38,6 +44,43 @@ namespace TP_Final_Benitez
 
             }
 
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuUsuario.aspx");
+        }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
+            PrioridadNegocio pNegocio = new PrioridadNegocio();
+            CategoriaNegocio cNegocio = new CategoriaNegocio();
+            TicketNegocio tNegocio = new TicketNegocio();
+            listaCategorias = cNegocio.listar();
+            listaPrioridades = pNegocio.listar();
+            try
+            {
+                TicketNegocio negocio = new TicketNegocio();
+                Ticket nuevo = new Ticket();
+
+                nuevo.Asunto = txtAsunto.Text;
+                nuevo.FechaCreacion = DateTime.Now;
+                nuevo.Activo = true;
+                nuevo.Mensaje = txtMensaje.Text;
+                nuevo.Contacto = txtContacto.Text;
+                nuevo.User = (Usuario)Session["usuario"];
+                nuevo.oPrioridad = listaPrioridades.Find(x => x.IdPrioridad.Equals(int.Parse(ddlPrioridades.SelectedValue)));
+                nuevo.oCategoria = listaCategorias.Find(x => x.IdCategoria.Equals(int.Parse(ddlCategorias.SelectedValue)));
+
+                tNegocio.InsertarNuevo(nuevo);
+                
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

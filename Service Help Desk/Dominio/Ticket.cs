@@ -10,14 +10,14 @@ namespace Dominio
     {
         public int TicketID { get; set; }
         public string Asunto { get; set; }
-        public int IdCategoria { get; set; }
-        public int IdPrioridad { get; set; }
-        public int IdEmpresa { get; set; }
+        public string Contacto { get; set; }
+        public Categoria oCategoria { get; set; }
+        public Prioridad oPrioridad { get; set; }
+        //public int IdEmpresa { get; set; }
         public DateTime FechaCreacion { get; set; }
         public bool Activo { get; set; }
-        public int IdEstado { get; set; }
-        public int IdTipo { get; set; }
-
-        public string Descripcion { get; set; }
+        public Estado Estado { get; set; }
+        public string Mensaje { get; set; }
+        public Usuario User { get; set; }
     }
 }

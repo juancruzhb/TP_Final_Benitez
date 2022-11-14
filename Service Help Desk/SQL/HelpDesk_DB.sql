@@ -25,23 +25,26 @@ CREATE TABLE Estados(
 
 GO
 
-CREATE TABLE Tickets(
-	Id bigint not null primary key IDENTITY(1,1),
-	Asunto varchar(200) not null,
-	Descripcion varchar(2000) not null,
-	IdCategoria int not null FOREIGN KEY REFERENCES Categorias(Id),
-	IdPrioridad int not null FOREIGN KEY REFERENCES Prioridades(Id),
-	FechaCreacion date,
-	IdEstado int not null
-)
-GO
-
 CREATE TABLE Usuarios(
-	Id bigint not null primary key identity(1,1),
+	Id int not null primary key identity(1,1),
 	Nombre varchar(50) not null,
 	Apellido varchar(50) not null,
-	Email varchar(100) not null,
-	Contraseña varchar(20) not null,
+	Email varchar(100) not null unique,
+	Contraseña varchar(20) not null
+	)
+GO
+
+CREATE TABLE Tickets(
+	Id int not null primary key IDENTITY(1,1),
+	Asunto varchar(200) not null,
+	Mensaje varchar(2000) not null,
+	IdCategoria int not null FOREIGN KEY REFERENCES Categorias(Id),
+	IdPrioridad int not null FOREIGN KEY REFERENCES Prioridades(Id),
+	FechaCreacion datetime,
+	IdEstado int not null,
+	IdUsuario int not null foreign key references usuarios(Id),
+	Celular varchar(20) not null
 )
+
 
 
