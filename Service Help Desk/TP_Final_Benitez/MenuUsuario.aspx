@@ -44,7 +44,7 @@
                     <asp:BoundField HeaderText="Prioridad" DataField="oPrioridad.Nombre" />
                     <asp:TemplateField>
                         <itemtemplate>
-                            <asp:LinkButton Text="Ver" ID="btnVer" CssClass="btn btn-primary" runat="server" />
+                            <asp:LinkButton Text="Ver" ID="btnVer" CssClass="btn btn-primary" CommandName="IdTicket" CommandArgument='<%#Eval("TicketId") %>' runat="server" OnCommand="btnVer_Command"/>
                         </itemtemplate>
                     </asp:TemplateField>
                 </Columns>

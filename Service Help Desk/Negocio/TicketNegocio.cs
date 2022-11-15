@@ -55,7 +55,7 @@ namespace Negocio
 
             try
             {
-                if(id == 0)
+                if (id == 0)
                 {
                     datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular from Tickets");
 
@@ -78,13 +78,13 @@ namespace Negocio
                         Contacto = datos.Reader["Celular"].ToString(),
                         oCategoria = categorias.Find(x => x.IdCategoria.Equals((int)datos.Reader["IdCategoria"])),
                         oPrioridad = prioridades.Find(x => x.IdPrioridad.Equals((int)datos.Reader["IdPrioridad"])),
-                         Estado= estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"]))
+                        Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"]))
 
                     });
                 }
                 return tickets;
 
-                
+
 
             }
             catch (Exception ex)
@@ -95,7 +95,51 @@ namespace Negocio
             finally { datos.close(); }
         }
 
+        public Ticket TicketPorId(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Categoria> categorias = new List<Categoria>();
+            List<Prioridad> prioridades = new List<Prioridad>();
+            List<Estado> estados = new List<Estado>();
+            EstadoNegocio eNegocio = new EstadoNegocio();
+            CategoriaNegocio cNegocio = new CategoriaNegocio();
+            PrioridadNegocio pNegocio = new PrioridadNegocio();
+
+            categorias = cNegocio.listar();
+            prioridades = pNegocio.listar();
+            estados = eNegocio.listar();
+
+            try
+            {
+                Ticket ticket = new Ticket();
+
+                datos.setearQuery("Select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular FROM Tickets WHERE Id = @Id");
+                datos.setearParametros("@Id", id);
+                datos.ejecutarReader();
+
+                while (datos.Reader.Read())
+                {
+
+                    ticket.TicketID = (int)datos.Reader["Id"];
+                    ticket.Asunto = datos.Reader["Asunto"].ToString();
+                    ticket.Mensaje = datos.Reader["Mensaje"].ToString();
+                    ticket.FechaCreacion = (DateTime)datos.Reader["FechaCreacion"];
+                    ticket.Contacto = datos.Reader["Celular"].ToString();
+                    ticket.oCategoria = categorias.Find(x => x.IdCategoria.Equals((int)datos.Reader["IdCategoria"]));
+                    ticket.oPrioridad = prioridades.Find(x => x.IdPrioridad.Equals((int)datos.Reader["IdPrioridad"]));
+                    ticket.Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"]));
+                }
+                return ticket;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
     }
 
-     
+
 }

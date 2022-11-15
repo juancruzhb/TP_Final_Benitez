@@ -73,6 +73,7 @@
     <Content Include="Registrarse.aspx" />
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\login.css" />
+    <Content Include="TicketDetalle.aspx" />
     <Content Include="TicketSuccess.aspx" />
     <Content Include="Web.config" />
     <Content Include="NuevoTicket.aspx" />
@@ -109,6 +110,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterUsuario.Master.cs">
+      <DependentUpon>MasterUsuario.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterUsuario.Master.designer.cs">
+      <DependentUpon>MasterUsuario.Master</DependentUpon>
+    </Compile>
     <Compile Include="MenuUsuario.aspx.cs">
       <DependentUpon>MenuUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,6 +139,13 @@
     <Compile Include="Registrarse.aspx.designer.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TicketDetalle.aspx.cs">
+      <DependentUpon>TicketDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketDetalle.aspx.designer.cs">
+      <DependentUpon>TicketDetalle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TicketSuccess.aspx.cs">
       <DependentUpon>TicketSuccess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -140,6 +155,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MasterUsuario.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

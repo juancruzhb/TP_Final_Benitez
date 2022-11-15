@@ -29,5 +29,12 @@ namespace TP_Final_Benitez
             dvTickets.DataBind();
 
         }
+
+
+        protected void btnVer_Command(object sender, CommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument.ToString());
+            Response.Redirect("TicketDetalle.aspx?Id=" + id, false);
+        }
     }
 }
