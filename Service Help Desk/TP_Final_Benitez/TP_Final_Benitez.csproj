@@ -69,16 +69,25 @@
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="LoginAgente.aspx" />
     <Content Include="MenuUsuario.aspx" />
     <Content Include="Registrarse.aspx" />
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\login.css" />
+    <Content Include="Styles\TDetalles.css" />
     <Content Include="TicketDetalle.aspx" />
     <Content Include="TicketSuccess.aspx" />
     <Content Include="Web.config" />
     <Content Include="NuevoTicket.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgenteMaster.Master.cs">
+      <DependentUpon>AgenteMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgenteMaster.Master.designer.cs">
+      <DependentUpon>AgenteMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -109,6 +118,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAgente.aspx.cs">
+      <DependentUpon>LoginAgente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginAgente.aspx.designer.cs">
+      <DependentUpon>LoginAgente.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterUsuario.Master.cs">
       <DependentUpon>MasterUsuario.Master</DependentUpon>
@@ -156,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterUsuario.Master" />
+    <Content Include="AgenteMaster.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

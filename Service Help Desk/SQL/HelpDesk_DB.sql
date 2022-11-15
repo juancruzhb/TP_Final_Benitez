@@ -45,6 +45,23 @@ CREATE TABLE Tickets(
 	IdUsuario int not null foreign key references usuarios(Id),
 	Celular varchar(20) not null
 )
+go
+
+CREATE TABLE Tipo_Agentes(
+	Id int not null primary key identity(1,1),
+	Tipo varchar(20) not null
+)
+go
+
+CREATE TABLE Agentes(
+	Id int not null primary key IDENTITY(100,10),
+	Apellido varchar(20) not null,
+	Nombre varchar(30) not null, 
+	Email varchar(30) not null,
+	Contraseña varchar(30) not null,
+	Tipo int not null foreign key references Tipo_Agentes(Id)
+)
+
 
 
 

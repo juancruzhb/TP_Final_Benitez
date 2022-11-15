@@ -34,6 +34,4 @@ AS
 INSERT INTO Tickets(Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular) 
 OUTPUT inserted.Id
 VALUES(@Asunto, @Mensaje, @IdCategoria, @IdPrioridad, @FechaCreacion, @IdEstado, @IdUsuario, @Celular)
-go;
 
-drop procedure sp_InsertarTicket

@@ -33,6 +33,9 @@
                     <div>
                         <asp:Button Text="Login" CssClass="btn btn-primary" runat="server"  ID="btnLogin" OnClick="btnLogin_Click" />
                     </div>
+                    <div>
+                        <a href="LoginAgente.aspx">¿Es usted un agente?</a>
+                    </div>
                 </div>
             </div>
             <div class="flex-child2">

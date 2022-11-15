@@ -1,0 +1,32 @@
+﻿body {
+}
+
+.uno{
+    display:flex;
+}
+.dos{
+    display: flex;
+    margin:auto;
+}
+.tres {
+    display: flex;
+}
+.cuatro {
+    display:inline-block
+}
+.cinco{
+    display:block
+}
+.mensaje{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left:auto;
+    margin-right:auto;
+    width:800px;
+    border:1px solid grey;
+    height:100px;
+    background-color:lightgray;
+}
+.spanMensaje{
+    padding:10px;
+}

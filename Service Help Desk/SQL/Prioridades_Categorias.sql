@@ -20,3 +20,11 @@ INSERT INTO Estados(Nombre) VALUES
 ('Cerrado'),
 ('Resuelto'),
 ('Pendiente')
+
+INSERT INTO Tipo_Agentes (Tipo) VALUES
+('Admin'),
+('Supervisor'),
+('Agente')
+
+INSERT INTO Agentes(Apellido, Nombre, Email, Contraseña, Tipo) VALUES
+('Juan', 'Benitez', 'juan@gmail', 'admin', 1)

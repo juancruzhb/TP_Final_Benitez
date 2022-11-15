@@ -9,6 +9,6 @@ namespace Dominio
     public class Tipo
     {
         public int IdTipo { get; set; }
-        public int Nombre { get; set; }
+        public string Nombre { get; set; }
     }
 }
