@@ -7,8 +7,53 @@
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title nuevos">Agentes</h5>
-                <asp:Button Text="Crear" class="btn btn-primary btn-lg" runat="server" ID="btnCrearAgente" />
+                <asp:Button Text="Crear" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" runat="server" ID="btnCrearAgente" OnClientClick="return false;" />
                 <asp:Button Text="Listado" class="btn btn-primary btn-lg" runat="server" ID="btnListadoAgentes" OnClick="btnListadoAgentes_Click" />
+                <div>
+
+                    <!-- Modal -->
+                    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Nuevo Agente</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <asp:Label Text="Apellido: " runat="server" />
+                                        <asp:TextBox runat="server" ID="txtCodigo" />
+                                    </div>
+                                    <div>
+                                        <asp:Label Text="Nombre: " runat="server" />
+                                        <asp:TextBox runat="server" ID="txtNombre" />
+                                    </div>
+                                    <div>
+                                        <asp:Label Text="Email: " runat="server" />
+                                        <asp:TextBox ID="txtDescripcion" runat="server" />
+                                    </div>
+                                    <div>
+                                        <asp:Label Text="Perfil: " runat="server" />
+                                        <asp:DropDownList ID="ddlPerfil" runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div>
+                                        <asp:Label Text="Contraseña: " runat="server" />
+                                        <asp:TextBox runat="server" ID="txtPrecio" />
+                                    </div>
+                                    <div>
+                                        <asp:Label Text="Confirmar Contraseña: " runat="server" />
+                                        <asp:TextBox runat="server" ID="txtUrlImagen" />
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <asp:Button Text="Aceptar" ID="btnAceptar" runat="server" CssClass="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card uno" style="width: 18rem;">
@@ -22,14 +67,14 @@
             <div class="card-body">
                 <h5 class="card-title">Estados</h5>
                 <asp:Button Text="Crear" class="btn btn-warning btn-lg" runat="server" />
-                <asp:Button Text="Listado" class="btn btn-warning btn-lg" runat="server" Id="btnListadoEstados" OnClick="btnListadoEstados_Click"/>
+                <asp:Button Text="Listado" class="btn btn-warning btn-lg" runat="server" ID="btnListadoEstados" OnClick="btnListadoEstados_Click" />
             </div>
         </div>
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Prioridades</h5>
                 <asp:Button Text="Crear" class="btn btn-danger btn-lg" runat="server" />
-                <asp:Button Text="Listado" class="btn btn-danger btn-lg" runat="server" Id="btnListadoPrioridades" OnClick="btnListadoPrioridades_Click"/>
+                <asp:Button Text="Listado" class="btn btn-danger btn-lg" runat="server" ID="btnListadoPrioridades" OnClick="btnListadoPrioridades_Click" />
             </div>
 
         </div>

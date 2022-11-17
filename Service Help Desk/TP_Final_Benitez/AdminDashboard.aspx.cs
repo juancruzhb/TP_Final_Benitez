@@ -13,6 +13,10 @@ namespace TP_Final_Benitez
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Tipo> perfiles = new List<Tipo>();
+            TipoNegocio tNegocio = new TipoNegocio();
+            perfiles = tNegocio.listar();
+
             Agente aux = new Agente();
             if (Session["agente"] == null)
             {
@@ -27,6 +31,14 @@ namespace TP_Final_Benitez
                     Session.Add("error", "No tienes los permisos para ingresar a este sector");
                     Response.Redirect("Error.aspx");
                 }
+            }
+
+            if (!Page.IsPostBack)
+            {
+                ddlPerfil.DataSource = perfiles;
+                ddlPerfil.DataTextField = "Nombre";
+                ddlPerfil.DataValueField = "IdTipo";
+                ddlPerfil.DataBind();
             }
 
         }
