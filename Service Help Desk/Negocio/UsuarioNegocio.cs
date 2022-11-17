@@ -92,5 +92,36 @@ namespace Negocio
             }
             finally { datos.close(); }
         }
+
+        public List<Usuario> listar()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Usuario> usuarios = new List<Usuario>();
+            try
+            {
+                datos.setearQuery("Select Id, Nombre, Apellido, Email, Contraseña from usuarios");
+
+                datos.ejecutarReader();
+                while (datos.Reader.Read())
+                {
+                    usuarios.Add(new Usuario()
+                    {
+                        IdUsuario = (int)datos.Reader["Id"],
+                        Apellido = datos.Reader["Apellido"].ToString(),
+                        Nombre = datos.Reader["Nombre"].ToString(),
+                        Email = datos.Reader["Email"].ToString(),
+                        Password = datos.Reader["Contraseña"].ToString()
+                    });
+
+                }
+                return usuarios;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.close(); }
+        }
     }
 }

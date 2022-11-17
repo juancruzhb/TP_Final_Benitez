@@ -64,6 +64,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgenteDashboard.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
@@ -81,6 +82,13 @@
     <Content Include="NuevoTicket.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgenteDashboard.aspx.cs">
+      <DependentUpon>AgenteDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgenteDashboard.aspx.designer.cs">
+      <DependentUpon>AgenteDashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgenteMaster.Master.cs">
       <DependentUpon>AgenteMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

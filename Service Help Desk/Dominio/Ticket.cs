@@ -19,5 +19,11 @@ namespace Dominio
         public Estado Estado { get; set; }
         public string Mensaje { get; set; }
         public Usuario User { get; set; }
+        public Agente AgenteAsignado { get; set; }
+        public string NombreApellido
+        {
+  
+            get { return User.Nombre + " " + User.Apellido; }
+        }
     }
 }

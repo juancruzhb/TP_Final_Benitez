@@ -13,7 +13,6 @@ namespace TP_Final_Benitez
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario aux = new Usuario();
-            int id = 0;
             if (Session["usuario"] == null)
             {
                 Session.Add("error", "Debes estar logueado para enviar acceder al menú");

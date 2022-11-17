@@ -29,9 +29,10 @@ CREATE PROCEDURE sp_InsertarTicket
 @FechaCreacion datetime,
 @IdEstado int,
 @IdUsuario int,
-@Celular varchar(20)
+@Celular varchar(20),
+@IdAgente int
 AS
-INSERT INTO Tickets(Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular) 
+INSERT INTO Tickets(Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular, IdAgente) 
 OUTPUT inserted.Id
-VALUES(@Asunto, @Mensaje, @IdCategoria, @IdPrioridad, @FechaCreacion, @IdEstado, @IdUsuario, @Celular)
+VALUES(@Asunto, @Mensaje, @IdCategoria, @IdPrioridad, @FechaCreacion, @IdEstado, @IdUsuario, @Celular, @IdAgente)
 

@@ -2,23 +2,23 @@
     box-sizing:border-box;
 }
 
-.ticket-summario-board {
-    list-style: none;
-    clear: left;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
+.container{
+    display:flex;
 }
-li {
-    display: list-item;
+.uno{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top:50px;
+    background-color:forestgreen;
 }
-.score-cards{
-    float:left;
-    width: 25%;
-    height:115px;
-    border:2px solid grey;
+.nuevos{
+    margin:0;
+    padding:0;
 }
-.a-cards{
-    display:block;
-    padding: 30px;
+
+.tablaGrid {
+    width:80%;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }

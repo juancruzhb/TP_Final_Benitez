@@ -25,6 +25,7 @@ namespace Negocio
                 datos.setearParametros("@IdEstado", 1);
                 datos.setearParametros("@IdUsuario", ticket.User.IdUsuario);
                 datos.setearParametros("@Celular", ticket.Contacto);
+                datos.setearParametros("@IdAgente", DBNull.Value);
 
                 return datos.ejecutarScalar();
 
@@ -45,24 +46,34 @@ namespace Negocio
             List<Categoria> categorias = new List<Categoria>();
             List<Prioridad> prioridades = new List<Prioridad>();
             List<Estado> estados = new List<Estado>();
+            List<Agente> agentes = new List<Agente>();
+            List<Usuario> usuarios = new List<Usuario>();
             EstadoNegocio eNegocio = new EstadoNegocio();
             CategoriaNegocio cNegocio = new CategoriaNegocio();
             PrioridadNegocio pNegocio = new PrioridadNegocio();
+            AgenteNegocio aNegocio = new AgenteNegocio();
+            UsuarioNegocio uNegocio = new UsuarioNegocio();
 
             categorias = cNegocio.listar();
             prioridades = pNegocio.listar();
             estados = eNegocio.listar();
+            agentes = aNegocio.listar();
+            usuarios = uNegocio.listar();
+
+            Agente agenteAux = new Agente() { IdAgente = 800 };
+            Agente agenteAux2 = new Agente();
+
 
             try
             {
                 if (id == 0)
                 {
-                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular from Tickets");
+                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular, IdAgente from Tickets");
 
                 }
                 else
                 {
-                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular from Tickets where Idusuario = @Id");
+                    datos.setearQuery("select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular, IdAgente from Tickets where Idusuario = @Id");
                     datos.setearParametros("@Id", id);
                 }
                 datos.ejecutarReader();
@@ -78,9 +89,14 @@ namespace Negocio
                         Contacto = datos.Reader["Celular"].ToString(),
                         oCategoria = categorias.Find(x => x.IdCategoria.Equals((int)datos.Reader["IdCategoria"])),
                         oPrioridad = prioridades.Find(x => x.IdPrioridad.Equals((int)datos.Reader["IdPrioridad"])),
-                        Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"]))
+                        Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"])),
+                        User = usuarios.Find(x => x.IdUsuario.Equals((int)datos.Reader["IdUsuario"]))
 
-                    });
+                        //AgenteAsignado = agenteAux
+
+                        //AgenteAsignado = datos.Reader["IdAgente"] != null ? agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["IdAgente"])): agenteAux
+                    }) ;
+
                 }
                 return tickets;
 
