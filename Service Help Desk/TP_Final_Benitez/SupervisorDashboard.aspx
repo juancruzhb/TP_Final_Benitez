@@ -42,6 +42,7 @@
     </div>
     <div class="tablaGrid">
         <asp:GridView AutoGenerateColumns="false" CssClass="table tablaTickets" ID="gvTickets" runat="server" OnRowDataBound="gvTickets_RowDataBound">
+    
             <Columns>
                 <asp:BoundField HeaderText="Ticket Numero" DataField="TicketId" />
                 <asp:BoundField HeaderText="Fecha Creacion" DataField="FechaCreacion" />
