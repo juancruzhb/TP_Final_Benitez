@@ -64,8 +64,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminDashboard.aspx" />
     <Content Include="AgenteDashboard.aspx" />
-    <Content Include="Dashboard.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
@@ -76,12 +76,27 @@
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\login.css" />
     <Content Include="Styles\TDetalles.css" />
+    <Content Include="SupervisorDashboard.aspx" />
     <Content Include="TicketDetalle.aspx" />
     <Content Include="TicketSuccess.aspx" />
     <Content Include="Web.config" />
     <Content Include="NuevoTicket.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="AgenteDashboard.aspx.cs">
       <DependentUpon>AgenteDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -95,13 +110,6 @@
     </Compile>
     <Compile Include="AgenteMaster.Master.designer.cs">
       <DependentUpon>AgenteMaster.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
@@ -163,6 +171,20 @@
     <Compile Include="Registrarse.aspx.designer.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SupervisorDashboard.aspx.cs">
+      <DependentUpon>SupervisorDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupervisorDashboard.aspx.designer.cs">
+      <DependentUpon>SupervisorDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SupervisorMaster.Master.cs">
+      <DependentUpon>SupervisorMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupervisorMaster.Master.designer.cs">
+      <DependentUpon>SupervisorMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="TicketDetalle.aspx.cs">
       <DependentUpon>TicketDetalle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,7 +203,9 @@
   <ItemGroup>
     <Content Include="MasterUsuario.Master" />
     <Content Include="AgenteMaster.Master" />
+    <Content Include="AdminMaster.Master" />
     <None Include="packages.config" />
+    <Content Include="SupervisorMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

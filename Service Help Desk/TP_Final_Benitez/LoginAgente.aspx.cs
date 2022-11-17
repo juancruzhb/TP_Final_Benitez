@@ -30,7 +30,16 @@ namespace TP_Final_Benitez
                 {
                     aux = negocio.ObtenerAgente(agente);
                     Session.Add("agente", aux);
-                    Response.Redirect("Dashboard.aspx", false);
+                    if(aux.Tipo.IdTipo == 3)
+                    {
+                        Response.Redirect("AgenteDashboard.aspx", false);
+                    }else if(aux.Tipo.IdTipo == 2)
+                    {
+                        Response.Redirect("SupervisorDashboard.aspx", false);
+                    }else if(aux.Tipo.IdTipo == 1)
+                    {
+                        Response.Redirect("AdminDashboard.aspx", false);
+                    }
 
                 }
                 else

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TP_Final_Benitez
 {
-    public partial class Dashboard : System.Web.UI.Page
+    public partial class AdminMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

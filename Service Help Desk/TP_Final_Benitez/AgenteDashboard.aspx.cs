@@ -13,7 +13,12 @@ namespace TP_Final_Benitez
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            Agente aux = new Agente();
+            if (Session["agente"] == null)
+            {
+                Session.Add("error", "Debes estar logueado para enviar acceder al menú");
+                Response.Redirect("Error.aspx");
+            }
 
         }
 
@@ -57,6 +62,12 @@ namespace TP_Final_Benitez
         {
             cargarTickets(2, 100);
 
+        }
+
+        protected void btnVer_Command(object sender, CommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument.ToString());
+            Response.Redirect("TicketDetalle.aspx?Id=" + id, false);
         }
     }
 }

@@ -155,6 +155,24 @@ namespace Negocio
 
         }
 
+        public void AsignarAgente(int idTicket,int idAgente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearQuery("Update tickets set IdAgente = @IdAgente where Id = @IdTicket");
+                datos.setearParametros("@IdAgente", idAgente);
+                datos.setearParametros("@IdTicket", idTicket);
+
+                datos.ejecutarQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 
 
