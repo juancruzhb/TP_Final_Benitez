@@ -11,6 +11,7 @@
         <div>
             <h1>Hubo un error</h1>
             <asp:Label Text="text" ID="lblError" runat="server" />
+            <a href="login.aspx">Volver al Login</a>
         </div>
     </form>
 </body>

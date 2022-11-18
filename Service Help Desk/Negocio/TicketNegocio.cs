@@ -60,8 +60,7 @@ namespace Negocio
             agentes = aNegocio.listar();
             usuarios = uNegocio.listar();
 
-            Agente agenteAux = new Agente() { IdAgente = 800 };
-            Agente agenteAux2 = new Agente();
+            int idaux = 0;
 
 
             try
@@ -90,11 +89,12 @@ namespace Negocio
                         oCategoria = categorias.Find(x => x.IdCategoria.Equals((int)datos.Reader["IdCategoria"])),
                         oPrioridad = prioridades.Find(x => x.IdPrioridad.Equals((int)datos.Reader["IdPrioridad"])),
                         Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"])),
-                        User = usuarios.Find(x => x.IdUsuario.Equals((int)datos.Reader["IdUsuario"]))
+                        User = usuarios.Find(x => x.IdUsuario.Equals((int)datos.Reader["IdUsuario"])),
+                        IdAgenteAsignado = datos.Reader["IdAgente"] != (object)DBNull.Value ? (int)datos.Reader["IdAgente"] : 0
+                        //AgenteAsignado = datos.Reader["IdAgente"] != null ? agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["IdAgente"])): agenteAux
 
                         //AgenteAsignado = agenteAux
 
-                        //AgenteAsignado = datos.Reader["IdAgente"] != null ? agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["IdAgente"])): agenteAux
                     }) ;
 
                 }

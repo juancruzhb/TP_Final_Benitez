@@ -11,6 +11,7 @@ namespace TP_Final_Benitez
 {
     public partial class AgenteDashboard : System.Web.UI.Page
     {
+ 
         protected void Page_Load(object sender, EventArgs e)
         {
             Agente aux = new Agente();
@@ -32,8 +33,14 @@ namespace TP_Final_Benitez
 
             foreach (var ticket in aux)
             {
-                if (ticket.Estado.IdEstado == estado)
-                    tickets.Add(ticket);
+                if(ticket.IdAgenteAsignado != 0)
+                {
+                    if (ticket.Estado.IdEstado == estado && ticket.IdAgenteAsignado == IdAgente)
+                    {
+                         tickets.Add(ticket);
+                    }
+
+                }
             }
 
             gvTickets.DataSource = tickets;
@@ -42,25 +49,36 @@ namespace TP_Final_Benitez
 
         protected void btnAbiertos_Click(object sender, EventArgs e)
         {
-            cargarTickets(1, 100);
+            Agente agente = new Agente();
+            agente = (Agente)Session["agente"];
+
+            cargarTickets(1, agente.IdAgente);
 
         }
 
         protected void btnResueltos_Click(object sender, EventArgs e)
         {
-            cargarTickets(3, 100);
+            Agente agente = new Agente();
+            agente = (Agente)Session["agente"];
+
+            cargarTickets(3, agente.IdAgente);
 
         }
 
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
-            cargarTickets(4, 100);
+            Agente agente = new Agente();
+            agente = (Agente)Session["agente"];
+
+            cargarTickets(4, agente.IdAgente);
 
         }
 
         protected void btnCerrados_Click(object sender, EventArgs e)
         {
-            cargarTickets(2, 100);
+            Agente agente = new Agente();
+            agente = (Agente)Session["agente"];
+            cargarTickets(2, agente.IdAgente);
 
         }
 

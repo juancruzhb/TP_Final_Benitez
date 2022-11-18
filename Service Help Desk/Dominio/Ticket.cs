@@ -20,6 +20,7 @@ namespace Dominio
         public string Mensaje { get; set; }
         public Usuario User { get; set; }
         public Agente AgenteAsignado { get; set; }
+        public int IdAgenteAsignado { get; set; }
         public string NombreApellido
         {
   

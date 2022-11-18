@@ -7,35 +7,30 @@
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title nuevos">Aca van las cantidades</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                 <asp:Button Text="Tickets Abiertos" class="btn btn-primary btn-lg" runat="server" ID="btnAbiertos" OnClick="btnAbiertos_Click"/>
             </div>
         </div>
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">Aca van las cantidades</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <asp:Button Text="Tickets Resueltos" class="btn btn-success btn-lg" runat="server" ID="btnResueltos"/>
+                <h5 class="card-title">Aca van las cantidades</h5>  
+                <asp:Button Text="Tickets Resueltos" class="btn btn-success btn-lg" runat="server" ID="btnResueltos" OnClick="btnResueltos_Click"/>
             </div>
         </div>
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Aca van las cantidades</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <asp:Button Text="Tickets Pendientes" class="btn btn-warning btn-lg" runat="server" ID="btnPendientes"  />
+                <asp:Button Text="Tickets Pendientes" class="btn btn-warning btn-lg" runat="server" ID="btnPendientes" OnClick="btnPendientes_Click" />
             </div>
         </div>
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Aca van las cantidades</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <asp:Button Text="Tickets Cerrados" class="btn btn-danger btn-lg" runat="server" ID="btnCerrados"  />
+                <asp:Button Text="Tickets Cerrados" class="btn btn-danger btn-lg" runat="server" ID="btnCerrados" OnClick="btnCerrados_Click" />
             </div>
         </div>
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                 <asp:Button Text="Tickets Sin Asignar" class="btn btn-secondary btn-lg" runat="server" ID="btnSinAsignar" OnClick="btnSinAsignar_Click"  />
             </div>
         </div>

@@ -30,7 +30,7 @@ namespace TP_Final_Benitez
             }
 
         }
-        private void cargarTickets(int estado, int IdAgente)
+        private void cargarTickets(int estado)
         {
             List<Ticket> aux = new List<Ticket>();
             List<Ticket> tickets = new List<Ticket>();
@@ -50,8 +50,26 @@ namespace TP_Final_Benitez
 
         protected void btnSinAsignar_Click(object sender, EventArgs e)
         {
+
             gvTickets.Columns[9].Visible = true;
-            cargarTickets(1, 100);
+            gvTickets.Columns[8].Visible = false;
+
+
+            List<Ticket> aux = new List<Ticket>();
+            List<Ticket> tickets = new List<Ticket>();
+            TicketNegocio tNegocio = new TicketNegocio();
+
+            aux = tNegocio.listar();
+
+            foreach (var ticket in aux)
+            {
+                if (ticket.Estado.IdEstado == 1 && ticket.IdAgenteAsignado == 0)
+                    tickets.Add(ticket);
+            }
+
+            gvTickets.DataSource = tickets;
+            gvTickets.DataBind();
+
 
         }
 
@@ -79,7 +97,7 @@ namespace TP_Final_Benitez
         protected void btnAbiertos_Click(object sender, EventArgs e)
         {
             gvTickets.Columns[9].Visible = false;
-            cargarTickets(2, 100);
+            cargarTickets(1);
         }
 
         protected void ddlAgentes_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,6 +110,21 @@ namespace TP_Final_Benitez
 
             negocio.AsignarAgente(idTicket, idAgente);
 
+        }
+
+        protected void btnResueltos_Click(object sender, EventArgs e)
+        {
+            cargarTickets(3);
+        }
+
+        protected void btnPendientes_Click(object sender, EventArgs e)
+        {
+            cargarTickets(4);
+        }
+
+        protected void btnCerrados_Click(object sender, EventArgs e)
+        {
+            cargarTickets(2);
         }
     }
 }
