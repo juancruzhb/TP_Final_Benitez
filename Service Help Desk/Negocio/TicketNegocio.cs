@@ -91,7 +91,7 @@ namespace Negocio
                         Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"])),
                         User = usuarios.Find(x => x.IdUsuario.Equals((int)datos.Reader["IdUsuario"])),
                         IdAgenteAsignado = datos.Reader["IdAgente"] != (object)DBNull.Value ? (int)datos.Reader["IdAgente"] : 0
-                        //AgenteAsignado = datos.Reader["IdAgente"] != null ? agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["IdAgente"])): agenteAux
+                        //AgenteAsignad o = datos.Reader["IdAgente"] != null ? agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["IdAgente"])): agenteAux
 
                         //AgenteAsignado = agenteAux
 
