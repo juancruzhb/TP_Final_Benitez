@@ -36,3 +36,18 @@ INSERT INTO Tickets(Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, Id
 OUTPUT inserted.Id
 VALUES(@Asunto, @Mensaje, @IdCategoria, @IdPrioridad, @FechaCreacion, @IdEstado, @IdUsuario, @Celular, @IdAgente)
 
+go
+
+Create Procedure Sp_InsertarAgente(
+@Apellido varchar(20), 
+@Nombre varchar(30), 
+@Email varchar(30), 
+@Contraseña varchar(30), 
+@Tipo int
+)
+AS
+Begin
+	Insert into Agentes (Apellido, Nombre, Email, Contraseña, Tipo)
+	Output inserted.Id
+	values(@Apellido, @Nombre, @Email, @Contraseña, @Tipo)
+End

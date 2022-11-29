@@ -100,5 +100,24 @@ namespace TP_Final_Benitez
             gvPrioridades.DataBind();
 
         }
+
+        protected void btnAceptarNuevoAgente_Click(object sender, EventArgs e)
+        {
+            List<Tipo> tipos = new List<Tipo>();
+            TipoNegocio tNegocio = new TipoNegocio();
+            tipos = tNegocio.listar();
+            AgenteNegocio negocio = new AgenteNegocio();
+            Agente agente = new Agente();
+
+            agente.Apellido = txtApellido.Text;
+            agente.Nombre = txtNombre.Text;
+            agente.Email = txtEmail.Text;
+            agente.Tipo = tipos.Find(x => x.IdTipo.Equals(int.Parse(ddlPerfil.SelectedValue)));
+            //TODO: verificar contraseña
+            agente.Password = txtContraseña.Text;
+
+            negocio.InsertarNuevo(agente);
+            //TODO: Desactivar agentes y que no puedan ingresar si esta desactivado
+        }
     }
 }

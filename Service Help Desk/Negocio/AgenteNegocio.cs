@@ -107,5 +107,27 @@ namespace Negocio
             }
             finally { datos.close(); }
         }
+
+        public int InsertarNuevo(Agente agente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearSP("Sp_InsertarAgente");
+                datos.setearParametros("@Apellido", agente.Apellido);
+                datos.setearParametros("@Nombre", agente.Nombre);
+                datos.setearParametros("@Email", agente.Email);
+                datos.setearParametros("@Contraseña", agente.Password);
+                datos.setearParametros("@Tipo", agente.Tipo.IdTipo);
+
+                return datos.ejecutarScalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.close(); }
+        }
     }
 }

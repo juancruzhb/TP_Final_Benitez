@@ -22,7 +22,7 @@
                                 <div class="modal-body">
                                     <div>
                                         <asp:Label Text="Apellido: " runat="server" />
-                                        <asp:TextBox runat="server" ID="txtCodigo" />
+                                        <asp:TextBox runat="server" ID="txtApellido" />
                                     </div>
                                     <div>
                                         <asp:Label Text="Nombre: " runat="server" />
@@ -30,7 +30,7 @@
                                     </div>
                                     <div>
                                         <asp:Label Text="Email: " runat="server" />
-                                        <asp:TextBox ID="txtDescripcion" runat="server" />
+                                        <asp:TextBox ID="txtEmail" runat="server" />
                                     </div>
                                     <div>
                                         <asp:Label Text="Perfil: " runat="server" />
@@ -38,17 +38,17 @@
                                     </div>
                                     <div>
                                         <asp:Label Text="Contraseña: " runat="server" />
-                                        <asp:TextBox runat="server" ID="txtPrecio" />
+                                        <asp:TextBox runat="server" ID="txtContraseña" />
                                     </div>
                                     <div>
                                         <asp:Label Text="Confirmar Contraseña: " runat="server" />
-                                        <asp:TextBox runat="server" ID="txtUrlImagen" />
+                                        <asp:TextBox runat="server" ID="txtConfirmaContraseña" />
                                     </div>
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <asp:Button Text="Aceptar" ID="btnAceptar" runat="server" CssClass="btn btn-primary" />
+                                    <asp:Button Text="Aceptar" ID="btnAceptarNuevoAgente" runat="server" CssClass="btn btn-primary" OnClick="btnAceptarNuevoAgente_Click" />
                                 </div>
                             </div>
                         </div>
@@ -58,9 +58,32 @@
         </div>
         <div class="card uno" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">Categorias</h5>
-                <asp:Button Text="Crear" class="btn btn-success btn-lg" runat="server" />
+                <h5 class="card-title nuevos">Categorias</h5>
+                <asp:Button Text="Crear" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" runat="server" ID="Button1" OnClientClick="return false;" />
                 <asp:Button Text="Listado" class="btn btn-success btn-lg" runat="server" ID="bntListadoCategorias" OnClick="bntListadoCategorias_Click" />
+                <div>
+                    <!-- Modal -->
+                    <div class="modal fade " id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel2">Nueva Categoria</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <asp:Label Text="Categoria: " runat="server" />
+                                        <asp:TextBox runat="server" ID="TextBox1" />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <asp:Button Text="Aceptar" ID="Button3" runat="server" CssClass="btn btn-primary" OnClick="btnAceptarNuevoAgente_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card uno" style="width: 18rem;">
