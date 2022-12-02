@@ -53,15 +53,25 @@ CREATE TABLE Tipo_Agentes(
 )
 go
 
-CREATE TABLE Agentes(
+Create TABLE Agentes(
 	Id int not null primary key IDENTITY(100,10),
 	Apellido varchar(20) not null,
 	Nombre varchar(30) not null, 
 	Email varchar(30) not null,
 	Contraseña varchar(30) not null,
-	Tipo int not null foreign key references Tipo_Agentes(Id)
+	Tipo int not null foreign key references Tipo_Agentes(Id),
+	Estado bit not null
 )
+go
 
-
-
+Create Table Tickets_Respuestas(
+	Id int not null primary key Identity(1,1),
+	Fecha datetime not null,
+	IdTicket int not null foreign key references Tickets(Id),
+	Respuesta varchar(2000) not null,
+	Emisor int not null foreign key references Agentes(Id)
+)
+go
+alter table Tickets
+Add IdAgente int null foreign key references Agentes(Id)
 

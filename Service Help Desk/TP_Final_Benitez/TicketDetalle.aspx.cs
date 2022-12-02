@@ -21,5 +21,10 @@ namespace TP_Final_Benitez
             }
 
         }
+
+        protected void btnEnviarRespuesta_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

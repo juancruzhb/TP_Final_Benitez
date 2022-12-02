@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-                        <div class="dos">
+            <div class="dos">
                 <div class="tres">
                     <div class="cuatro">
                         <div class="cinco">
@@ -54,7 +54,19 @@
                     </div>
                 </div>
             </div>
-                        <div class="dos">
+            <div class="dos">
+                <div class="tres">
+                    <div class="cuatro">
+                        <div class="cinco">
+                            <span>Asignado a: </span>
+                        </div>
+                        <div class="cinco">
+                            <span><%:seleccionado.AgenteAsignado.NombreApellido%></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dos">
                 <div class="tres">
                     <div class="cuatro">
                         <div class="cinco">
@@ -66,10 +78,39 @@
                     </div>
                 </div>
             </div>
-        </div>
-            <div class="mensaje">
-                <span class="spanMensaje"><%:seleccionado.Mensaje %></span>
+            <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Responder</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Respuesta</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Mensaje:</label>
+                                        <textarea class="form-control" id="message-text"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <asp:Button Text="Enviar" CssClass = "btn btn-primary" runat="server" Id="btnEnviarRespuesta" OnClick="btnEnviarRespuesta_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="mensaje">
+            <span class="spanMensaje"><%:seleccionado.Mensaje %></span>
+        </div>
     </div>
-    <div><h3>Comentarios realizados</h3></div>
+
+    <div>
+        <h3>Comentarios realizados</h3>
+    </div>
 </asp:Content>

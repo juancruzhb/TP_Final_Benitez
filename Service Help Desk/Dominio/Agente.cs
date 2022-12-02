@@ -14,6 +14,11 @@ namespace Dominio
         public string Email { get; set; }
         public Tipo Tipo { get; set; }
         public string Password { get; set; }
+        public string NombreApellido
+        {
+
+            get { return Nombre + " " + Apellido; }
+        }
 
     }
 }

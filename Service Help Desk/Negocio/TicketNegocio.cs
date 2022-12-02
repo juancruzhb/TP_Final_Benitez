@@ -116,20 +116,25 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             List<Categoria> categorias = new List<Categoria>();
             List<Prioridad> prioridades = new List<Prioridad>();
+            List<Agente> agentes = new List<Agente>();
             List<Estado> estados = new List<Estado>();
             EstadoNegocio eNegocio = new EstadoNegocio();
+            AgenteNegocio aNegocio = new AgenteNegocio();
             CategoriaNegocio cNegocio = new CategoriaNegocio();
             PrioridadNegocio pNegocio = new PrioridadNegocio();
+            Agente aux = new Agente();
+            aux.Nombre = "Sin asignar";
 
             categorias = cNegocio.listar();
             prioridades = pNegocio.listar();
             estados = eNegocio.listar();
+            agentes = aNegocio.listar();
 
             try
             {
                 Ticket ticket = new Ticket();
 
-                datos.setearQuery("Select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular FROM Tickets WHERE Id = @Id");
+                datos.setearQuery("Select Id, Asunto, Mensaje, IdCategoria, IdPrioridad, FechaCreacion, IdEstado, IdUsuario, Celular, IdAgente FROM Tickets WHERE Id = @Id");
                 datos.setearParametros("@Id", id);
                 datos.ejecutarReader();
 
@@ -144,6 +149,7 @@ namespace Negocio
                     ticket.oCategoria = categorias.Find(x => x.IdCategoria.Equals((int)datos.Reader["IdCategoria"]));
                     ticket.oPrioridad = prioridades.Find(x => x.IdPrioridad.Equals((int)datos.Reader["IdPrioridad"]));
                     ticket.Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"]));
+                    ticket.AgenteAsignado = datos.Reader["IdAgente"] != (object)DBNull.Value ? agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["IdAgente"])):aux;
                 }
                 return ticket;
             }
