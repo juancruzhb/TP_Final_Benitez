@@ -89,16 +89,16 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Mensaje:</label>
-                                        <textarea class="form-control" id="message-text"></textarea>
+                                        <asp:TextBox CssClass="form-control" TextMode="MultiLine"  runat="server" ID="txtRespuestaNueva"/>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <asp:Button Text="Enviar" CssClass = "btn btn-primary" runat="server" Id="btnEnviarRespuesta" OnClick="btnEnviarRespuesta_Click" />
+                                <asp:Button Text="Enviar22" CssClass = "btn btn-primary" runat="server" Id="btnEnviarRespuesta" OnClick="btnEnviarRespuesta_Click" UseSubmitBehavior="false"  CausesValidation="false"/>
                             </div>
                         </div>
                     </div>

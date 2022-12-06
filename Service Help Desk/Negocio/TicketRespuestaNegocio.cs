@@ -21,12 +21,16 @@ namespace Negocio
                 datos.setearParametros("@IdTicket", respuesta.TicketId);
                 datos.setearParametros("@Respuesta", respuesta.Respuesta);
                 datos.setearParametros("@Emisor", respuesta.Agente.IdAgente);
+
+                return datos.ejecutarScalar();
+                
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
+            finally { datos.close(); }
         }
     }
 }
