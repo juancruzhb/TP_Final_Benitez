@@ -79,30 +79,7 @@
                 </div>
             </div>
             <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Responder</button>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Respuesta</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div>
-                                    <div class="mb-3">
-                                        <label for="message-text" class="col-form-label">Mensaje:</label>
-                                        <asp:TextBox CssClass="form-control" TextMode="MultiLine"  runat="server" ID="txtRespuestaNueva"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <asp:Button Text="Enviar22" CssClass = "btn btn-primary" runat="server" Id="btnEnviarRespuesta" OnClick="btnEnviarRespuesta_Click" UseSubmitBehavior="false"  CausesValidation="false"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <asp:Button Text="Responder" CssClass="btn btn-primary" ID="btnResponderTicket2" runat="server" OnClick="btnResponderTicket2_Click" UseSubmitBehavior="false" />
             </div>
         </div>
         <div class="mensaje">
@@ -112,5 +89,11 @@
 
     <div>
         <h3>Comentarios realizados</h3>
+    </div>
+    <div class="container">
+        <asp:TextBox  TextMode="MultiLine" runat="server" Visible ="false" ID="txtRespuestaTicket" CausesValidation="false" />
+        <asp:Button Text="Enviar" CssClass="btn btn-primary" runat="server" Visible="false" ID="btnEnviarRespuestaTicket" UseSubmitBehavior = "false" OnClick="btnEnviarRespuestaTicket_Click" />
+        
+        <asp:Button Text="Cancelar" CssClass="btn btn-success" runat="server" Visible ="false" Id="btnCancelarRespuestaTicket" OnClick="btnCancelarRespuestaTicket_Click" UseSubmitBehavior="false"/>
     </div>
 </asp:Content>

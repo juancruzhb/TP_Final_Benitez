@@ -12,13 +12,8 @@ namespace TP_Final_Benitez
     public partial class TicketDetalle : System.Web.UI.Page
     {
        public Ticket seleccionado = new Ticket();
-        private string mensaje;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
-            {
-                mensaje = txtRespuestaNueva.Text;
-            }
             if(Request.QueryString["Id"] != null)
             {
                 TicketNegocio negocio = new TicketNegocio();
@@ -27,19 +22,35 @@ namespace TP_Final_Benitez
 
         }
 
-        protected void btnEnviarRespuesta_Click(object sender, EventArgs e)
+        protected void btnResponderTicket2_Click(object sender, EventArgs e)
+        {
+            MostrarOcultarRespuestas(true);
+        }
+
+        protected void btnCancelarRespuestaTicket_Click(object sender, EventArgs e)
+        {
+            MostrarOcultarRespuestas(false);
+        }
+
+        protected void MostrarOcultarRespuestas(bool estado)
+        {
+            btnCancelarRespuestaTicket.Visible = estado;
+            txtRespuestaTicket.Visible = estado;
+            btnEnviarRespuestaTicket.Visible = estado;
+        }
+
+        protected void btnEnviarRespuestaTicket_Click(object sender, EventArgs e)
         {
 
             TicketRespuesta respuesta = new TicketRespuesta();
             TicketRespuestaNegocio negocio = new TicketRespuestaNegocio();
 
-            respuesta.Agente =(Agente) Session["agente"];
+            respuesta.Agente = (Agente)Session["agente"];
             respuesta.Fecha = DateTime.Now;
             respuesta.TicketId = seleccionado.TicketID;
-            respuesta.Respuesta = txtRespuestaNueva.Text;
+            respuesta.Respuesta = txtRespuestaTicket.Text;
 
             negocio.InsertarNueva(respuesta);
-            
         }
     }
 }
