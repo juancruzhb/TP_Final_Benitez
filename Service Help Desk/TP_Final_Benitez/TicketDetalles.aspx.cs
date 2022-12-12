@@ -9,16 +9,27 @@ using Negocio;
 
 namespace TP_Final_Benitez
 {
-    public partial class TicketDetalle : System.Web.UI.Page
+    public partial class TicketDetalles : System.Web.UI.Page
     {
-       public Ticket seleccionado = new Ticket();
+        public Ticket seleccionado = new Ticket();
+        public List<TicketRespuesta> respuestas = new List<TicketRespuesta>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["Id"] != null)
+
+
+            if (Request.QueryString["Id"] != null)
             {
                 TicketNegocio negocio = new TicketNegocio();
                 seleccionado = negocio.TicketPorId(int.Parse(Request.QueryString["Id"]));
+
+                TicketRespuestaNegocio TPNegocio = new TicketRespuestaNegocio();
+                respuestas = TPNegocio.listar(seleccionado.TicketID);
             }
+
+            rpRespuestas.DataSource = respuestas;
+            rpRespuestas.DataBind();
+            
 
         }
 
@@ -45,12 +56,13 @@ namespace TP_Final_Benitez
             TicketRespuesta respuesta = new TicketRespuesta();
             TicketRespuestaNegocio negocio = new TicketRespuestaNegocio();
 
-            respuesta.Agente = (Agente)Session["agente"];
+            respuesta.Emisor = (Agente)Session["agente"];
             respuesta.Fecha = DateTime.Now;
             respuesta.TicketId = seleccionado.TicketID;
             respuesta.Respuesta = txtRespuestaTicket.Text;
-
+            lblSuccesRespuesta.Visible = true;
             negocio.InsertarNueva(respuesta);
+
         }
     }
 }

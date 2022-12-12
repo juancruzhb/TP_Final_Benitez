@@ -33,7 +33,7 @@ namespace TP_Final_Benitez
         protected void btnVer_Command(object sender, CommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument.ToString());
-            Response.Redirect("TicketDetalle.aspx?Id=" + id, false);
+            Response.Redirect("TicketDetalles.aspx?Id=" + id, false);
         }
     }
 }

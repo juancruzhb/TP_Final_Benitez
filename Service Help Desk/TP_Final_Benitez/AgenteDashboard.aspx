@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="tablaGrid">
-        <asp:GridView AutoGenerateColumns="false" CssClass="table tablaTickets" ID="gvTickets" runat="server">
+        <asp:GridView AutoGenerateColumns="false" CssClass="table tablaTickets" ID="gvTickets" runat="server" OnRowDataBound="gvTickets_RowDataBound">
             <Columns>
                 <asp:BoundField HeaderText="Ticket Numero" DataField="TicketId" />
                 <asp:BoundField HeaderText="Fecha Creacion" DataField="FechaCreacion" />
@@ -48,9 +48,10 @@
                         <asp:LinkButton Text="Ver" ID="btnVer" CssClass="btn btn-primary" runat="server" CommandName="IdTicket" CommandArgument='<%#Eval("TicketId") %>' OnCommand="btnVer_Command" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Indicador de Respuesta">
-                    <ItemTemplate >
-                        <asp:LinkButton Text="X" ID="btnSinRespuesta" CssClass="btn btn-danger" runat="server" />
+                <asp:TemplateField HeaderText="Cambiar Estado" Visible="true"  >
+                    <ItemTemplate>
+                        <asp:DropDownList runat="server" ID="ddlEstados" AutoPostBack="true" OnSelectedIndexChanged="ddlCambiarEstado_SelectedIndexChanged">
+                        </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

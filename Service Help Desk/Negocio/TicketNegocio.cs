@@ -179,6 +179,24 @@ namespace Negocio
             }
         }
 
+        public void CambiarEstado(int idTicket, int idEstado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearQuery("Update tickets set IdEstado = @IdEstado where Id = @IdTicket");
+                datos.setearParametros("@IdEstado", idEstado);
+                datos.setearParametros("@IdTicket", idTicket);
+
+                datos.ejecutarQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 
 
