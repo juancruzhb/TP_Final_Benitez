@@ -62,6 +62,7 @@ namespace Negocio
                 datos.setearParametros("@IdTicket", respuesta.TicketId);
                 datos.setearParametros("@Respuesta", respuesta.Respuesta);
                 datos.setearParametros("@Emisor", respuesta.Emisor.IdAgente);
+                datos.setearParametros("@Tipo", 1);
 
                 return datos.ejecutarScalar();
                 

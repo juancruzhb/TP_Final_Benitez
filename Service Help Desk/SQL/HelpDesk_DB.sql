@@ -75,3 +75,6 @@ go
 alter table Tickets
 Add IdAgente int null foreign key references Agentes(Id)
 
+go
+alter table tickets_respuestas
+add Tipo int not null 
