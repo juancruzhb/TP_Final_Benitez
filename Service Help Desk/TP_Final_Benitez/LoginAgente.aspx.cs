@@ -30,16 +30,21 @@ namespace TP_Final_Benitez
                 {
                     aux = negocio.ObtenerAgente(agente);
                     Session.Add("agente", aux);
-                    if(aux.Tipo.IdTipo == 3)
+                    if(aux.Tipo.IdTipo == 3 && aux.Estado)
                     {
                         Response.Redirect("AgenteDashboard.aspx", false);
-                    }else if(aux.Tipo.IdTipo == 2)
+                    }else if(aux.Tipo.IdTipo == 2 && aux.Estado)
                     {
                         Response.Redirect("SupervisorDashboard.aspx", false);
-                    }else if(aux.Tipo.IdTipo == 1)
+                    }else if(aux.Tipo.IdTipo == 1 && aux.Estado)
                     {
                         Response.Redirect("AdminDashboard.aspx", false);
+                    }else if (aux.Estado == false)
+                    {
+                        Session.Add("error", "El agente se encuentra desactivado, comuniquese con el administrador");
+                        Response.Redirect("Error.aspx", false);
                     }
+
 
                 }
                 else

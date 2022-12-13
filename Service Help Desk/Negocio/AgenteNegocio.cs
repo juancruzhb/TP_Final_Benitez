@@ -49,7 +49,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearQuery("Select Id, Apellido, Nombre, Email, Contraseña, Tipo from Agentes");
+                datos.setearQuery("Select Id, Apellido, Nombre, Email, Contraseña, Tipo, Estado from Agentes");
                 datos.ejecutarReader();
                 while (datos.Reader.Read())
                 {
@@ -61,6 +61,7 @@ namespace Negocio
                         Email = datos.Reader["Email"].ToString(),
                         Password = datos.Reader["Contraseña"].ToString(),
                         Tipo = tipos.Find(x => x.IdTipo.Equals((int)datos.Reader["Tipo"])),
+                        Estado = (bool)datos.Reader["Estado"]
 
                     });
                 }
@@ -84,7 +85,7 @@ namespace Negocio
             Agente aux = new Agente();
             try
             {
-                datos.setearQuery("Select Id, Apellido, Nombre, Email, Contraseña, Tipo from Agentes where Email = @Email and Contraseña = @Pass");
+                datos.setearQuery("Select Id, Apellido, Nombre, Email, Contraseña, Tipo, Estado from Agentes where Email = @Email and Contraseña = @Pass");
                 datos.setearParametros("@Email", agente.Email);
                 datos.setearParametros("@Pass", agente.Password);
 
@@ -97,6 +98,7 @@ namespace Negocio
                     aux.Email = datos.Reader["Email"].ToString();
                     aux.Password = datos.Reader["Contraseña"].ToString();
                     aux.Tipo = tipos.Find(x => x.IdTipo.Equals((int)datos.Reader["Tipo"]));
+                    aux.Estado = (bool)datos.Reader["Estado"];
                 }
                 return aux;
             }
@@ -128,6 +130,32 @@ namespace Negocio
                 throw ex;
             }
             finally { datos.close(); }
+        }
+
+        public void ActivarDesactivarAgente(int idAgente, bool estado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int aux = 0;
+            if (estado)
+            {
+                aux = 1;
+            }
+
+            try
+            {
+                datos.setearQuery("Update Agentes set Estado = @Estado where Id = @IdAgente");
+                datos.setearParametros("@Estado",aux);
+                datos.setearParametros("@IdAgente", idAgente);
+                datos.ejecutarQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.close();
+            }
         }
     }
 }

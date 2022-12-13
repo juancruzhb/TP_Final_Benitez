@@ -35,5 +35,35 @@ namespace TP_Final_Benitez
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             Response.Redirect("TicketDetalles.aspx?Id=" + id, false);
         }
+
+        protected void btnlogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("login.aspx");
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Usuario aux = new Usuario();
+            List<Ticket> tickets = new List<Ticket>();
+            List<Ticket> filtrados = new List<Ticket>();
+            TicketNegocio negocio = new TicketNegocio();
+            tickets = negocio.listar(aux.IdUsuario);
+            string filtro = txtBuscar.Text;
+
+            if (filtro != "")
+            {
+                filtrados = tickets.FindAll(x => x.TicketID.ToString() == filtro || x.Asunto.ToLower().Contains(filtro.ToLower()));
+            }
+            else
+            {
+                filtrados = tickets;
+            }
+
+
+            dvTickets.DataSource = null;
+            dvTickets.DataSource = filtrados;
+            dvTickets.DataBind();
+        }
     }
 }

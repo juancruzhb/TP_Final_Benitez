@@ -13,5 +13,11 @@ namespace TP_Final_Benitez
         {
 
         }
+
+        protected void btnlogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("login.aspx");
+        }
     }
 }

@@ -20,7 +20,8 @@ GO
 
 CREATE TABLE Estados(
 	Id int not null primary key IDENTITY(1,1),
-	Nombre varchar(50) not null
+	Nombre varchar(50) not null,
+	Activo bit not null
 )
 
 GO
@@ -78,3 +79,4 @@ Add IdAgente int null foreign key references Agentes(Id)
 go
 alter table tickets_respuestas
 add Tipo int not null 
+go

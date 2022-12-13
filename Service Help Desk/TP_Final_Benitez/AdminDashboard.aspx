@@ -103,19 +103,82 @@
         </div>
     </div>
     <div class="tablaGrid">
-        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="true" ID="gvAgentes">
+        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="false" ID="gvAgentes">
+            <Columns>
+                <asp:BoundField HeaderText="Id" DataField="IdAgente" />
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                <asp:BoundField HeaderText="Email" DataField="Email" />
+                <asp:BoundField HeaderText="Tipo" DataField="Tipo.Nombre" />
+                <asp:BoundField HeaderText="Estado" DataField="MostrarEstado" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Activar" ID="btnActivarAgente" CssClass="btn btn-success" CommandName="IdAgente" CommandArgument='<%#Eval("IdAgente") %>' runat="server" OnCommand="btnActivarAgente_Command" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Desactivar" ID="btnDesactivarAgente" CssClass="btn btn-danger" CommandName="IdAgente" CommandArgument='<%#Eval("IdAgente") %>' runat="server" OnCommand="btnDesactivarAgente_Command" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
         </asp:GridView>
     </div>
     <div class="tablaGrid">
-        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="true" ID="gvCategorias">
+        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="false" ID="gvCategorias">
+            <Columns>
+                <asp:BoundField HeaderText="Id" DataField="IdCategoria" />
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Estado" DataField="MostrarEstado" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Activar" ID="btnActivarCategoria" CssClass="btn btn-success" CommandName="IdCategoria" CommandArgument='<%#Eval("IdCategoria") %>' runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Desactivar" ID="btnDesactivarCategoria" CssClass="btn btn-danger" CommandName="IdCategoria" CommandArgument='<%#Eval("IdCategoria") %>' runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
         </asp:GridView>
     </div>
     <div class="tablaGrid">
-        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="true" ID="gvEstados">
+        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="false" ID="gvEstados">
+            <Columns>
+                <asp:BoundField HeaderText="Id" DataField="IdEstado" />
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Estado" DataField="MostrarEstado" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Activar" ID="btnActivarEstado" CssClass="btn btn-success" CommandName="IdEstado" CommandArgument='<%#Eval("IdEstado") %>' runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Desactivar" ID="btnDesactivarEstado" CssClass="btn btn-danger" CommandName="IdEstado" CommandArgument='<%#Eval("IdEstado") %>' runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
         </asp:GridView>
     </div>
     <div class="tablaGrid">
-        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="true" ID="gvPrioridades">
+        <asp:GridView runat="server" CssClass="table" AutoGenerateColumns="false" ID="gvPrioridades">
+            <Columns>
+                <asp:BoundField HeaderText="Id" DataField="IdPrioridad" />
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Estado" DataField="MostrarEstado" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Activar" ID="btnActivarPrioridad" CssClass="btn btn-success" CommandName="IdPrioridad" CommandArgument='<%#Eval("IdPrioridad") %>' runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton Text="Desactivar" ID="btnDesactivarPrioridad" CssClass="btn btn-danger" CommandName="IdPrioridad" CommandArgument='<%#Eval("IdPrioridad") %>' runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
         </asp:GridView>
     </div>
 </asp:Content>

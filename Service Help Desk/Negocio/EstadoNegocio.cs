@@ -18,14 +18,15 @@ namespace Negocio
             {
                 List<Estado> estados = new List<Estado>();
 
-                datos.setearQuery("Select Id, Nombre from Estados");
+                datos.setearQuery("Select Id, Nombre, Activo from Estados");
                 datos.ejecutarReader();
                 while (datos.Reader.Read())
                 {
                     estados.Add(new Estado
                     {
                         IdEstado =(int)datos.Reader["Id"],
-                        Nombre = datos.Reader["Nombre"].ToString()
+                        Nombre = datos.Reader["Nombre"].ToString(),
+                        Activo = (bool)datos.Reader["Activo"]
                     });
                 }
                 return estados;

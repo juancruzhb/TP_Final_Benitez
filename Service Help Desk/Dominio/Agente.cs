@@ -14,10 +14,26 @@ namespace Dominio
         public string Email { get; set; }
         public Tipo Tipo { get; set; }
         public string Password { get; set; }
+        public bool Estado { get; set; }
         public string NombreApellido
         {
 
             get { return Nombre + " " + Apellido; }
+        }
+
+        public string MostrarEstado
+        {
+            get
+            {
+                if (Estado)
+                {
+                    return "Activo";
+                }
+                else
+                {
+                    return "Desactivado";
+                }
+            }
         }
 
     }

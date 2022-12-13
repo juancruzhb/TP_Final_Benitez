@@ -30,7 +30,8 @@ namespace Negocio
                         prioridades.Add(new Prioridad()
                         {
                             IdPrioridad = (int)reader["ID"],
-                            Nombre = (string)reader["Nombre"]
+                            Nombre = (string)reader["Nombre"],
+                            Activo= (bool)reader["Activo"]
                         });
 
                     }

@@ -27,8 +27,10 @@
                                 </li>
                             </ul>
                             <form class="d-flex" role="search">
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control me-2" Width="30%" TextMode="Search" placeholder="Buscar Ticket"></asp:TextBox>
-                                <asp:Button CssClass="btn btn-outline-success" Text="Buscar" runat="server" ID="btnBuscar" />
+                                <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control me-2" Width="30%" TextMode="Search" placeholder="Buscar Ticket"></asp:TextBox>
+                                <asp:Button CssClass="btn btn-outline-success" Text="Buscar" runat="server" ID="btnBuscar" OnClick="btnBuscar_Click" />
+                                <asp:Button CssClass="btn btn-outline-danger" Text="Logut" runat="server" ID="btnlogout" OnClick="btnlogout_Click" />
+
                             </form>
                         </div>
                     </div>

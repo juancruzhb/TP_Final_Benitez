@@ -49,11 +49,11 @@ namespace TP_Final_Benitez
             gvCategorias.Visible = false;
             gvEstados.Visible = false;
             gvPrioridades.Visible = false;
+ 
             List<Agente> agentes = new List<Agente>();
             AgenteNegocio negocio = new AgenteNegocio();
 
             agentes = negocio.listar();
-
             gvAgentes.DataSource = agentes;
             gvAgentes.DataBind();
         }
@@ -118,6 +118,32 @@ namespace TP_Final_Benitez
 
             negocio.InsertarNuevo(agente);
             //TODO: Desactivar agentes y que no puedan ingresar si esta desactivado
+        }
+
+        protected void btnActivarAgente_Command(object sender, CommandEventArgs e)
+        {
+            AgenteNegocio negocio = new AgenteNegocio();
+            int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarAgente(idTicket, true);
+
+            List<Agente> agentes = new List<Agente>();
+
+            agentes = negocio.listar();
+            gvAgentes.DataSource = agentes;
+            gvAgentes.DataBind();
+
+        }
+
+        protected void btnDesactivarAgente_Command(object sender, CommandEventArgs e)
+        {
+            AgenteNegocio negocio = new AgenteNegocio();
+            int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarAgente(idTicket, false);
+
+            List<Agente> agentes = new List<Agente>();
+            agentes = negocio.listar();
+            gvAgentes.DataSource = agentes;
+            gvAgentes.DataBind();
         }
     }
 }

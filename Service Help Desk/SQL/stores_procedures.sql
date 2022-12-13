@@ -1,13 +1,20 @@
 
 CREATE PROCEDURE sp_obtenerCategorias
 AS
-SELECT ID, NOMBRE FROM Categorias
+SELECT ID, NOMBRE, Activo FROM Categorias
 GO
 
 CREATE PROCEDURE sp_obtenerPrioridades
 AS
 BEGIN
-SELECT ID, NOMBRE FROM Prioridades
+SELECT ID, NOMBRE, Activo FROM Prioridades
+END
+GO
+
+CREATE PROCEDURE sp_obtenerEstados
+AS
+BEGIN
+SELECT ID, NOMBRE, Activo FROM Estados
 END
 GO
 
