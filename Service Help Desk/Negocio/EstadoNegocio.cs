@@ -40,5 +40,50 @@ namespace Negocio
             finally { datos.close(); }
         }
 
+        public void ActivarDesactivarEstado(int idEstado, bool activo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int aux = 0;
+            if (activo)
+            {
+                aux = 1;
+            }
+
+            try
+            {
+                datos.setearQuery("Update Estados set Activo = @Activo where Id = @IdEstado");
+                datos.setearParametros("@Activo", aux);
+                datos.setearParametros("@IdEstado", idEstado);
+                datos.ejecutarQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.close();
+            }
+        }
+
+        public bool InsertarEstado(Estado estado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearQuery("insert into Estados (Nombre, Activo) Values (@Nombre, 1)");
+                datos.setearParametros("@Nombre", estado.Nombre);
+
+                datos.ejecutarQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.close(); }
+        }
+
     }
 }

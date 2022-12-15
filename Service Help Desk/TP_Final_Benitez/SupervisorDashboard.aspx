@@ -46,9 +46,9 @@
                         <asp:LinkButton Text="Ver" ID="btnVer" CssClass="btn btn-primary" runat="server" CommandName="IdTicket" CommandArgument='<%#Eval("TicketId") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Indicador de Respuesta">
+                <asp:TemplateField HeaderText="Accion">
                     <ItemTemplate>
-                        <asp:LinkButton Text="X" ID="btnSinRespuesta" CssClass="btn btn-danger" runat="server" />
+                        <asp:LinkButton Text="Reabrir" Visible ="false" ID="btnReabrir" CssClass="btn btn-danger" runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Agente Asignado" Visible="false"  >

@@ -12,7 +12,7 @@ namespace Dominio
         public int TicketId { get; set; }
         public string Respuesta { get; set; }
         public DateTime Fecha { get; set; }
-        public Agente Emisor { get; set; }
+        public int Emisor { get; set; }
         public int Tipo { get; set; }
     }
 }

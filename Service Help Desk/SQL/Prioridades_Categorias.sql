@@ -18,7 +18,7 @@ INSERT INTO Prioridades(Nombre, Activo) VALUES
 INSERT INTO Estados(Nombre, Activo) VALUES
 ('Abierto', 1),
 ('Cerrado', 1),
-('Resuelto' 1),
+('Resuelto', 1),
 ('Pendiente', 1)
 
 INSERT INTO Tipo_Agentes (Tipo) VALUES

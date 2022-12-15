@@ -46,6 +46,7 @@
     <Compile Include="EstadoNegocio.cs" />
     <Compile Include="PrioridadNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RespuestasLeidasNegocio.cs" />
     <Compile Include="TicketNegocio.cs" />
     <Compile Include="TicketRespuestaNegocio.cs" />
     <Compile Include="TipoNegocio.cs" />

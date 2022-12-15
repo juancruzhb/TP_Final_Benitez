@@ -46,5 +46,50 @@ namespace Negocio
             }
             return categorias;
         }
+
+        public void ActivarDesactivarCategoria(int IdCategoria, bool activo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int aux = 0;
+            if (activo)
+            {
+                aux = 1;
+            }
+
+            try
+            {
+                datos.setearQuery("Update Categorias set Activo = @Activo where Id = @IdCategoria");
+                datos.setearParametros("@Activo", aux);
+                datos.setearParametros("@IdCategoria", IdCategoria);
+                datos.ejecutarQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.close();
+            }
+        }
+
+        public bool InsertarCategoria(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearQuery("insert into Categorias (Nombre, Activo) Values (@Nombre, 1)");
+                datos.setearParametros("@Nombre", categoria.Nombre);
+
+                datos.ejecutarQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.close(); }
+        }
     }
 }

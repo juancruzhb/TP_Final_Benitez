@@ -55,13 +55,36 @@ namespace TP_Final_Benitez
 
             TicketRespuesta respuesta = new TicketRespuesta();
             TicketRespuestaNegocio negocio = new TicketRespuestaNegocio();
+            RespuestasLeidas nuevaRespuesta = new RespuestasLeidas();
 
-            respuesta.Emisor = (Agente)Session["agente"];
             respuesta.Fecha = DateTime.Now;
             respuesta.TicketId = seleccionado.TicketID;
             respuesta.Respuesta = txtRespuestaTicket.Text;
+            nuevaRespuesta.IdTicket = respuesta.TicketId;
+            nuevaRespuesta.Leido = false;
+
+
+            if(Session["agente"]!= null)
+            {
+                Agente aux = new Agente();
+                aux = (Agente)Session["agente"];
+                respuesta.Emisor = aux.IdAgente; ;
+                respuesta.Tipo = 1;
+                nuevaRespuesta.EsAgente = true;
+               
+
+            }else if (Session["usuario"] != null)
+            {
+                Usuario aux = new Usuario();
+                aux = (Usuario)Session["usuario"];
+                respuesta.Emisor = aux.IdUsuario;
+                respuesta.Tipo = 0;
+            }
+
             lblSuccesRespuesta.Visible = true;
             negocio.InsertarNueva(respuesta);
+            Response.Redirect(Request.RawUrl);
+
 
         }
     }

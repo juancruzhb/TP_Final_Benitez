@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgenteMaster.Master" AutoEventWireup="true" CodeBehind="LoginAgente.aspx.cs" Inherits="TP_Final_Benitez.LoginAgente" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/AgenteMaster.Master" AutoEventWireup="true" CodeBehind="LoginAgente.aspx.cs" Inherits="TP_Final_Benitez.LoginAgente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

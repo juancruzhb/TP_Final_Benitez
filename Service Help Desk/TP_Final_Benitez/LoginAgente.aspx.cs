@@ -18,6 +18,8 @@ namespace TP_Final_Benitez
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            Session.Remove("usuario");
+
             Agente agente = new Agente();
             Agente aux = new Agente();
             AgenteNegocio negocio = new AgenteNegocio();

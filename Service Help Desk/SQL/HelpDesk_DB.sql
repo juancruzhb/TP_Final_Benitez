@@ -80,3 +80,7 @@ go
 alter table tickets_respuestas
 add Tipo int not null 
 go
+
+Create table Tickets_conRespuestas(
+	IdTicket int not null primary key foreign key references Tickets(Id),
+	Leido bit not null)

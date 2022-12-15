@@ -114,22 +114,22 @@ namespace TP_Final_Benitez
         protected global::System.Web.UI.WebControls.Button bntListadoCategorias;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtNuevaCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtNuevaCategoria;
 
         /// <summary>
-        /// Button3 control.
+        /// btnAceptarNuevaCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button btnAceptarNuevaCategoria;
 
         /// <summary>
         /// btnListadoEstados control.
@@ -141,6 +141,24 @@ namespace TP_Final_Benitez
         protected global::System.Web.UI.WebControls.Button btnListadoEstados;
 
         /// <summary>
+        /// txtNuevoEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNuevoEstado;
+
+        /// <summary>
+        /// btnAceptarNuevoEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAceptarNuevoEstado;
+
+        /// <summary>
         /// btnListadoPrioridades control.
         /// </summary>
         /// <remarks>
@@ -148,6 +166,24 @@ namespace TP_Final_Benitez
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnListadoPrioridades;
+
+        /// <summary>
+        /// txtNuevaPrioridad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNuevaPrioridad;
+
+        /// <summary>
+        /// btnAceptarNuevaPrioridad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAceptarNuevaPrioridad;
 
         /// <summary>
         /// gvAgentes control.

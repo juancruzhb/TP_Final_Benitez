@@ -124,6 +124,7 @@ namespace TP_Final_Benitez
 
         protected void btnCerrados_Click(object sender, EventArgs e)
         {
+
             cargarTickets(2);
         }
     }

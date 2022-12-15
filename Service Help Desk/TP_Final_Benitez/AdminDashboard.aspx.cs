@@ -145,5 +145,127 @@ namespace TP_Final_Benitez
             gvAgentes.DataSource = agentes;
             gvAgentes.DataBind();
         }
+
+        protected void btnActivarCategoria_Command(object sender, CommandEventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            int idCategoria = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarCategoria(idCategoria, true);
+
+            cargarCategorias();
+        }
+
+        protected void btnDesactivarCategoria_Command(object sender, CommandEventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            int idCategoria = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarCategoria(idCategoria, false);
+
+            cargarCategorias();
+        }
+
+        protected void btnActivarEstado_Command(object sender, CommandEventArgs e)
+        {
+            EstadoNegocio negocio = new EstadoNegocio();
+            int idEstado = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarEstado(idEstado, true);
+
+            cargarEstados();
+        }
+
+        protected void btnDesactivarEstado_Command(object sender, CommandEventArgs e)
+        {
+            EstadoNegocio negocio = new EstadoNegocio();
+            int idEstado = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarEstado(idEstado, false);
+
+            cargarEstados();
+        }
+
+        protected void btnActivarPrioridad_Command(object sender, CommandEventArgs e)
+        {
+            PrioridadNegocio negocio = new PrioridadNegocio();
+            int idPrioridad = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarPrioridad(idPrioridad, true);
+
+            cargarPrioridad();
+            
+        }
+
+        protected void btnDesactivarPrioridad_Command(object sender, CommandEventArgs e)
+        {
+            PrioridadNegocio negocio = new PrioridadNegocio();
+            int idPrioridad = Convert.ToInt32(e.CommandArgument.ToString());
+            negocio.ActivarDesactivarPrioridad(idPrioridad, false);
+
+            cargarPrioridad();
+        }
+
+        protected void btnAceptarNuevaCategoria_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            Categoria categoria = new Categoria();
+            categoria.Nombre = txtNuevaCategoria.Text;
+            categoria.Activo = true;
+
+            if (negocio.InsertarCategoria(categoria))
+            {
+                cargarCategorias();
+            }
+
+        }
+
+        protected void btnAceptarNuevoEstado_Click(object sender, EventArgs e)
+        {
+            EstadoNegocio negocio = new EstadoNegocio();
+            Estado estado = new Estado();
+            estado.Nombre = txtNuevoEstado.Text;
+            estado.Activo = true;
+
+            if (negocio.InsertarEstado(estado))
+                cargarEstados();
+
+        }
+
+        protected void btnAceptarNuevaPrioridad_Click(object sender, EventArgs e)
+        {
+            PrioridadNegocio negocio = new PrioridadNegocio();
+            Prioridad prioridad = new Prioridad();
+            prioridad.Nombre = txtNuevaPrioridad.Text;
+            prioridad.Activo = true;
+
+            if (negocio.InsertarPrioridad(prioridad))
+                cargarPrioridad();
+
+
+        }
+
+        private void cargarPrioridad()
+        {
+            List<Prioridad> prioridades = new List<Prioridad>();
+            PrioridadNegocio negocio = new PrioridadNegocio();
+            prioridades = negocio.listar();
+            gvPrioridades.DataSource = prioridades;
+            gvPrioridades.DataBind();
+        }
+
+        private void cargarEstados()
+        {
+            List<Estado> estados = new List<Estado>();
+            EstadoNegocio negocio = new EstadoNegocio();
+            estados = negocio.listar();
+            gvEstados.DataSource = estados;
+            gvEstados.DataBind();
+        }
+
+        private void cargarCategorias()
+        {
+            List<Categoria> categorias = new List<Categoria>();
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            categorias = negocio.listar();
+            gvCategorias.DataSource = categorias;
+            gvCategorias.DataBind();
+        }
+
     }
 }

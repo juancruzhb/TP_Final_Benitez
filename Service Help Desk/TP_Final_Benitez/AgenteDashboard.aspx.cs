@@ -96,6 +96,8 @@ namespace TP_Final_Benitez
 
             negocio.CambiarEstado(idTicket, idEstado);
 
+            Response.Redirect(Request.RawUrl);
+
         }
 
         protected void gvTickets_RowDataBound(object sender, GridViewRowEventArgs e)

@@ -13,11 +13,9 @@ namespace Negocio
         public List<TicketRespuesta> listar(int idTicket)
         {
             List<TicketRespuesta> respuestas = new List<TicketRespuesta>();
-            List<Agente> agentes = new List<Agente>();
-            AgenteNegocio aNegocio = new AgenteNegocio();
+
             AccesoDatos datos = new AccesoDatos();
 
-            agentes = aNegocio.listar();
             try
             {
 
@@ -35,7 +33,7 @@ namespace Negocio
                         Respuesta = datos.Reader["Respuesta"].ToString(),
                         Fecha = (DateTime)datos.Reader["Fecha"],
                         Tipo =(int) datos.Reader["Tipo"],
-                        Emisor = agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["Emisor"])),
+                        Emisor = (int)datos.Reader["Emisor"],
                     }) ;
 
                 }
@@ -61,8 +59,8 @@ namespace Negocio
                 datos.setearParametros("@Fecha", DateTime.Now);
                 datos.setearParametros("@IdTicket", respuesta.TicketId);
                 datos.setearParametros("@Respuesta", respuesta.Respuesta);
-                datos.setearParametros("@Emisor", respuesta.Emisor.IdAgente);
-                datos.setearParametros("@Tipo", 1);
+                datos.setearParametros("@Emisor", respuesta.Emisor);
+                datos.setearParametros("@Tipo", respuesta.Tipo);
 
                 return datos.ejecutarScalar();
                 

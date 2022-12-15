@@ -25,17 +25,23 @@ namespace TP_Final_Benitez
 
             if (!Page.IsPostBack)
             {
+                List<Categoria> listaFiltradaCat = new List<Categoria>();
                 CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
                 listaCategorias = categoriaNegocio.listar();
-                ddlCategorias.DataSource = listaCategorias;
+
+                listaFiltradaCat = filtrarListaCategoria(listaCategorias);
+                ddlCategorias.DataSource = listaFiltradaCat;
                 ddlCategorias.DataTextField = "Nombre";
                 ddlCategorias.DataValueField = "IdCategoria";
                 ddlCategorias.DataBind();
                 ddlCategorias.Items.Insert(0, new ListItem("--Categoria--", "0"));
 
+                List<Prioridad> listaFiltradaPrio = new List<Prioridad>();
                 PrioridadNegocio prioridadNegocio = new PrioridadNegocio();
                 listaPrioridades = prioridadNegocio.listar();
-                ddlPrioridades.DataSource = listaPrioridades;
+                listaFiltradaPrio = filtrarListaPrioridades(listaPrioridades);
+
+                ddlPrioridades.DataSource = listaFiltradaPrio;
                 ddlPrioridades.DataTextField = "Nombre";
                 ddlPrioridades.DataValueField = "IdPrioridad";
                 ddlPrioridades.DataBind();
@@ -84,6 +90,45 @@ namespace TP_Final_Benitez
 
                 throw ex;
             }
+        }
+
+        private List<Categoria> filtrarListaCategoria(List<Categoria> categorias)
+        {
+            List<Categoria> filtrada = new List<Categoria>();
+
+            foreach (var cat in categorias)
+            {
+                if (cat.Activo)
+                    filtrada.Add(cat);
+            }
+
+            return filtrada;
+        }
+
+        private List<Prioridad> filtrarListaPrioridades(List<Prioridad> prioridades)
+        {
+            List<Prioridad> filtrada = new List<Prioridad>();
+
+            foreach (var cat in prioridades)
+            {
+                if (cat.Activo)
+                    filtrada.Add(cat);
+            }
+
+            return filtrada;
+        }
+
+        private List<Estado> filtrarListaEstados(List<Estado> estados)
+        {
+            List<Estado> filtrada = new List<Estado>();
+
+            foreach (var cat in estados)
+            {
+                if (cat.Activo)
+                    filtrada.Add(cat);
+            }
+
+            return filtrada;
         }
     }
 }
