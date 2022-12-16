@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class TicketRespuestaNegocio
     {
-        public List<TicketRespuesta> listar(int idTicket)
+        public List<TicketRespuesta> listar(int idTicket = 0)
         {
             List<TicketRespuesta> respuestas = new List<TicketRespuesta>();
 
@@ -19,7 +19,8 @@ namespace Negocio
             try
             {
 
-                datos.setearQuery("  select Id, Fecha, IdTicket, Respuesta, Emisor, tipo from Tickets_Respuestas where IdTicket = @IdTicket");
+                datos.setearQuery("  select Id, Fecha, IdTicket, Respuesta, Emisor, EsAgente, Leido from Tickets_Respuestas where IdTicket = @IdTicket");
+
                 datos.setearParametros("@IdTicket", idTicket);
 
                 datos.ejecutarReader();
@@ -32,8 +33,9 @@ namespace Negocio
                         TicketId = (int)datos.Reader["IdTicket"],
                         Respuesta = datos.Reader["Respuesta"].ToString(),
                         Fecha = (DateTime)datos.Reader["Fecha"],
-                        Tipo =(int) datos.Reader["Tipo"],
                         Emisor = (int)datos.Reader["Emisor"],
+                        EsAgente =(bool)datos.Reader["EsAgente"],
+                        Leido = (bool)datos.Reader["Leido"]
                     }) ;
 
                 }
@@ -60,7 +62,9 @@ namespace Negocio
                 datos.setearParametros("@IdTicket", respuesta.TicketId);
                 datos.setearParametros("@Respuesta", respuesta.Respuesta);
                 datos.setearParametros("@Emisor", respuesta.Emisor);
-                datos.setearParametros("@Tipo", respuesta.Tipo);
+                datos.setearParametros("@EsAgente", respuesta.EsAgente);
+                datos.setearParametros("Leido", respuesta.Leido);
+
 
                 return datos.ejecutarScalar();
                 
@@ -71,6 +75,44 @@ namespace Negocio
                 throw ex;
             }
             finally { datos.close(); }
+        }
+
+        public void LeerRespuesta(int idTicket, int esUsuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearSP("SP_LeerRespuesta");
+                datos.setearParametros("@IdTicket", idTicket);
+                datos.setearParametros("@EsAgente", esUsuario);
+                datos.ejecutarQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        public bool VerificaLectura(int IdTicket, bool esAgente)
+        {
+            List<TicketRespuesta> lista = new List<TicketRespuesta>();
+
+            lista = listar(IdTicket);
+
+            foreach (var respuestas in lista)
+            {
+                if(respuestas.Leido == false && respuestas.EsAgente != esAgente)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+            
         }
     }
 }

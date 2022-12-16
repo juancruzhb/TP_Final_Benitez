@@ -48,13 +48,8 @@ namespace TP_Final_Benitez
             gvTickets.DataBind();
         }
 
-        protected void btnSinAsignar_Click(object sender, EventArgs e)
+        private void cargarTicketsSinAsignar()
         {
-
-            gvTickets.Columns[9].Visible = true;
-            gvTickets.Columns[8].Visible = false;
-
-
             List<Ticket> aux = new List<Ticket>();
             List<Ticket> tickets = new List<Ticket>();
             TicketNegocio tNegocio = new TicketNegocio();
@@ -69,7 +64,17 @@ namespace TP_Final_Benitez
 
             gvTickets.DataSource = tickets;
             gvTickets.DataBind();
+        }
 
+        protected void btnSinAsignar_Click(object sender, EventArgs e)
+        {
+
+            gvTickets.Columns[10].Visible = true;
+            gvTickets.Columns[9].Visible = false;
+            gvTickets.Columns[7].Visible = false;
+
+
+            cargarTicketsSinAsignar();
 
         }
 
@@ -83,6 +88,7 @@ namespace TP_Final_Benitez
                 agentes = negocio.listar();
 
                 DropDownList ddlAgentes = (e.Row.FindControl("ddlAgentes") as DropDownList);
+                ddlAgentes.Visible = true;
                 ddlAgentes.DataSource = agentes;
                 ddlAgentes.DataTextField = "Apellido";
                 ddlAgentes.DataValueField = "IdAgente";
@@ -91,12 +97,14 @@ namespace TP_Final_Benitez
 
             }
 
-            
         }
 
         protected void btnAbiertos_Click(object sender, EventArgs e)
         {
             gvTickets.Columns[9].Visible = false;
+            gvTickets.Columns[10].Visible = false;
+            gvTickets.Columns[7].Visible = true;
+
             cargarTickets(1);
         }
 
@@ -109,23 +117,102 @@ namespace TP_Final_Benitez
             int idTicket = int.Parse(gvr.Cells[0].Text);
 
             negocio.AsignarAgente(idTicket, idAgente);
+            cargarTicketsSinAsignar();
 
         }
 
         protected void btnResueltos_Click(object sender, EventArgs e)
         {
+            gvTickets.Columns[10].Visible = false;
+            gvTickets.Columns[9].Visible = true;
+            gvTickets.Columns[7].Visible = true;
+            gvTickets.Columns[11].Visible = false;
+            gvTickets.Columns[12].Visible = true;
+            gvTickets.Columns[13].Visible = true;
+
             cargarTickets(3);
         }
 
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
+            gvTickets.Columns[9].Visible = false;
+            gvTickets.Columns[10].Visible = false;
+            gvTickets.Columns[7].Visible = true;
+            gvTickets.Columns[11].Visible = true;
+            gvTickets.Columns[13].Visible = true;
+            gvTickets.Columns[12].Visible = false;
+
             cargarTickets(4);
         }
 
         protected void btnCerrados_Click(object sender, EventArgs e)
         {
+            gvTickets.Columns[10].Visible = false;
+            gvTickets.Columns[9].Visible = true;
+            gvTickets.Columns[11].Visible = true;
+            gvTickets.Columns[7].Visible = true;
+            gvTickets.Columns[12].Visible = true;
+            gvTickets.Columns[13].Visible = false;
+
 
             cargarTickets(2);
+  
+        }
+
+
+
+        protected void btnReabrir_Command(object sender, CommandEventArgs e)
+        {
+            TicketNegocio negocio = new TicketNegocio();
+
+
+            int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
+
+            negocio.CambiarEstado(idTicket, 1);
+
+            cargarTickets(1);
+            Response.Redirect(Request.RawUrl);
+        }
+
+
+
+        protected void btnResuelto_Command(object sender, CommandEventArgs e)
+        {
+            TicketNegocio negocio = new TicketNegocio();
+
+
+            int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
+
+            negocio.CambiarEstado(idTicket, 3);
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnPendiente_Command(object sender, CommandEventArgs e)
+        {
+            TicketNegocio negocio = new TicketNegocio();
+
+
+            int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
+
+            negocio.CambiarEstado(idTicket, 4);
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnCerrado_Command(object sender, CommandEventArgs e)
+        {
+            TicketNegocio negocio = new TicketNegocio();
+
+
+            int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
+
+            negocio.CambiarEstado(idTicket, 2);
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnVer_Command(object sender, CommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument.ToString());
+            Response.Redirect("TicketDetalles.aspx?Id=" + id, false);
         }
     }
 }

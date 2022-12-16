@@ -63,3 +63,16 @@ Begin
 	Output inserted.Id
 	values(@Apellido, @Nombre, @Email, @Contraseña, @Tipo)
 End
+
+go
+
+Create procedure SP_LeerRespuesta(
+@IdTicket int,
+@EsAgente int
+)
+As
+Begin
+	Update Tickets_Respuestas set Leido = 1 where IdTicket = @IdTicket and EsAgente = @EsAgente
+end
+
+go

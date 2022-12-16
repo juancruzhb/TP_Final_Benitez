@@ -36,7 +36,7 @@
                     </div>
                 </nav>
             </header>
-            <asp:GridView AutoGenerateColumns="false" CssClass="table" runat="server" ID="dvTickets">
+            <asp:GridView AutoGenerateColumns="false" CssClass="table" runat="server" ID="dvTickets" OnRowDataBound="dvTickets_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderText="Ticket Numero" DataField="TicketId" />
                     <asp:BoundField HeaderText="Fecha Creacion" DataField="FechaCreacion" />

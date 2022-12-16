@@ -55,13 +55,14 @@ namespace TP_Final_Benitez
 
             TicketRespuesta respuesta = new TicketRespuesta();
             TicketRespuestaNegocio negocio = new TicketRespuestaNegocio();
-            RespuestasLeidas nuevaRespuesta = new RespuestasLeidas();
+
 
             respuesta.Fecha = DateTime.Now;
             respuesta.TicketId = seleccionado.TicketID;
             respuesta.Respuesta = txtRespuestaTicket.Text;
-            nuevaRespuesta.IdTicket = respuesta.TicketId;
-            nuevaRespuesta.Leido = false;
+            respuesta.EsAgente = false;
+            respuesta.Leido = false;
+
 
 
             if(Session["agente"]!= null)
@@ -69,16 +70,15 @@ namespace TP_Final_Benitez
                 Agente aux = new Agente();
                 aux = (Agente)Session["agente"];
                 respuesta.Emisor = aux.IdAgente; ;
-                respuesta.Tipo = 1;
-                nuevaRespuesta.EsAgente = true;
+                respuesta.EsAgente = true;
+
                
 
             }else if (Session["usuario"] != null)
             {
                 Usuario aux = new Usuario();
                 aux = (Usuario)Session["usuario"];
-                respuesta.Emisor = aux.IdUsuario;
-                respuesta.Tipo = 0;
+
             }
 
             lblSuccesRespuesta.Visible = true;
@@ -86,6 +86,19 @@ namespace TP_Final_Benitez
             Response.Redirect(Request.RawUrl);
 
 
+        }
+
+        protected void btnVolverAtras_Click(object sender, EventArgs e)
+        {
+
+            if(Session["agente"]!= null)
+            {
+                Response.Redirect("AgenteDashboard.aspx");
+            }else if (Session["usuario"] != null)
+            {
+                Response.Redirect("MenuUsuario.aspx");
+
+            }
         }
     }
 }

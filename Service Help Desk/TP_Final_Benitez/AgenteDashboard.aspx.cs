@@ -82,8 +82,12 @@ namespace TP_Final_Benitez
 
         protected void btnVer_Command(object sender, CommandEventArgs e)
         {
+            TicketRespuestaNegocio negocio = new TicketRespuestaNegocio();
+
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             Response.Redirect("TicketDetalles.aspx?Id=" + id, false);
+
+            negocio.LeerRespuesta(id, 0);
         }
 
         protected void ddlCambiarEstado_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,6 +118,13 @@ namespace TP_Final_Benitez
                 ddlEstados.DataValueField = "IdEstado";
                 ddlEstados.DataBind();
                 ddlEstados.Items.Insert(0, new ListItem("Cambiar Estado"));
+
+            }
+
+            TicketRespuestaNegocio n = new TicketRespuestaNegocio();
+            if (!n.VerificaLectura(Convert.ToInt16(DataBinder.Eval(e.Row.DataItem, "TicketId")), true))
+            {
+                e.Row.BackColor = System.Drawing.Color.LightGreen;
 
             }
         }

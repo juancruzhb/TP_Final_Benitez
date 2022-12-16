@@ -70,17 +70,19 @@ Create Table Tickets_Respuestas(
 	Fecha datetime not null,
 	IdTicket int not null foreign key references Tickets(Id),
 	Respuesta varchar(2000) not null,
-	Emisor int not null foreign key references Agentes(Id)
+	Emisor int not null,
+	EsAgente bit not null,
+	Leido bit not null
 )
 go
 alter table Tickets
 Add IdAgente int null foreign key references Agentes(Id)
 
 go
-alter table tickets_respuestas
-add Tipo int not null 
-go
 
-Create table Tickets_conRespuestas(
-	IdTicket int not null primary key foreign key references Tickets(Id),
-	Leido bit not null)
+Create table nuevas_respuestas(
+	Id int not null primary key identity (1,1),
+	IdTicket int not null foreign key references Tickets(Id),
+	Leido bit not null,
+	EsAgente bit not null
+	)

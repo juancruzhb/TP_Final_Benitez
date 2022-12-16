@@ -34,6 +34,9 @@ namespace TP_Final_Benitez
         {
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             Response.Redirect("TicketDetalles.aspx?Id=" + id, false);
+
+            TicketRespuestaNegocio negocio = new TicketRespuestaNegocio();
+            negocio.LeerRespuesta(id, 1);
         }
 
         protected void btnlogout_Click(object sender, EventArgs e)
@@ -65,5 +68,17 @@ namespace TP_Final_Benitez
             dvTickets.DataSource = filtrados;
             dvTickets.DataBind();
         }
-    }
+
+        protected void dvTickets_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            TicketRespuestaNegocio n = new TicketRespuestaNegocio();
+            if(!n.VerificaLectura(Convert.ToInt16(DataBinder.Eval(e.Row.DataItem, "TicketId")), false))
+            {
+                e.Row.BackColor = System.Drawing.Color.LightGreen;
+
+            }
+
+        }
+        }
+ 
 }

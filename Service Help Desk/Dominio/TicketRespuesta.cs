@@ -13,6 +13,8 @@ namespace Dominio
         public string Respuesta { get; set; }
         public DateTime Fecha { get; set; }
         public int Emisor { get; set; }
-        public int Tipo { get; set; }
+        public bool EsAgente { get; set; }
+        public bool Leido { get; set; }
+
     }
 }

@@ -100,7 +100,7 @@
             </div>
             <asp:Repeater runat="server" ID="rpRespuestas">
                 <ItemTemplate>
-                    <div class="container" style="border: 2px solid grey; margin-bottom:25px;">
+                    <div class="container"  <%#(bool)Eval("EsAgente") == true ? "style= 'border: 2px solid grey; margin-bottom:25px; margin-right:20px; background-color:darkslategrey'" : "style = 'border: 2px solid grey; margin-bottom:25px; margin-left:20px;'"%> >
                         <div class="uno">
                             <h3><%:seleccionado.Asunto%></h3>
                             <div class="dos">
@@ -119,62 +119,15 @@
                                 <div class="tres">
                                     <div class="cuatro">
                                         <div class="cinco">
-                                            <span>Fecha de creacion</span>
+                                            <span>Fecha Envio</span>
                                         </div>
                                         <div class="cinco">
                                             <span><%#Eval("Fecha")%></span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="dos">
-                                <div class="tres">
-                                    <div class="cuatro">
-                                        <div class="cinco">
-                                            <span>Categoria</span>
-                                        </div>
-                                        <div class="cinco">
-                                            <span>ponercategoria</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dos">
-                                <div class="tres">
-                                    <div class="cuatro">
-                                        <div class="cinco">
-                                            <span>Prioridad</span>
-                                        </div>
-                                        <div class="cinco">
-                                            <span>Poner Prioridad</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dos">
-                                <div class="tres">
-                                    <div class="cuatro">
-                                        <div class="cinco">
-                                            <span>Asignado a: </span>
-                                        </div>
-                                        <div class="cinco">
-                                            <span>Poner Agente</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dos">
-                                <div class="tres">
-                                    <div class="cuatro">
-                                        <div class="cinco">
-                                            <span>Estado</span>
-                                        </div>
-                                        <div class="cinco">
-                                            <span>Poner Estado</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>              
+                            
                         </div>
                         <div class="mensaje">
                             <span class="spanMensaje"><%#Eval("Respuesta")%></span>
@@ -187,6 +140,9 @@
                 <asp:Button Text="Enviar" CssClass="btn btn-primary" runat="server" Visible="false" ID="btnEnviarRespuestaTicket" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicket_Click" />
                 <asp:Button Text="Cancelar" CssClass="btn btn-success" runat="server" Visible="false" ID="btnCancelarRespuestaTicket" OnClick="btnCancelarRespuestaTicket_Click" UseSubmitBehavior="false" />
                 <asp:Label Text="Se ha enviado la respuesta correctamente" ID="lblSuccesRespuesta" CssClass="alert-success" Visible="false" runat="server" />
+            </div>
+            <div>
+                <asp:Button Text="VOLVER ATRAS" CssClass="btn btn-primary btn-lg" runat="server" id="btnVolverAtras" OnClick="btnVolverAtras_Click"/>
             </div>
         </div>
     </form>
