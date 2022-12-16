@@ -22,13 +22,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" >Modificar mi perfil</a>
+                                <a class="nav-link" href="#">Modificar mi perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton CssClass="nav-link"  runat="server" id="btnSupervisorDashboard" OnClick="btnSupervisorDashboard_Click" >Supervisor Dashboard</asp:LinkButton>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
-                            <asp:TextBox ID="txtBuscas" runat="server" CssClass="form-control me-2" Width="30%" TextMode="Search" placeholder="Buscar Ticket" Visible="false"></asp:TextBox>
-                            <asp:Button CssClass="btn btn-outline-success" Text="Buscar" runat="server" ID="btnBuscar" Visible="false"/>
-                            <asp:Button CssClass="btn btn-outline-danger" Text="Logout" runat="server" ID="btnlogout" OnClick="btnlogout_Click" Visible="false"/>
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control me-2" Width="30%" TextMode="Search" placeholder="Buscar Ticket"></asp:TextBox>
+                            <asp:Button CssClass="btn btn-outline-success" Text="Buscar" runat="server" ID="btnBuscar" OnClick="btnBuscar_Click"/>
+                            <asp:Button CssClass="btn btn-outline-danger" Text="Logout" runat="server" ID="btnlogout" OnClick="btnlogout_Click"/>
                         </form>
                     </div>
                 </div>

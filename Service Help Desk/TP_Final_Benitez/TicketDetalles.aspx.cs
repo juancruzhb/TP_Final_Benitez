@@ -29,7 +29,22 @@ namespace TP_Final_Benitez
 
             rpRespuestas.DataSource = respuestas;
             rpRespuestas.DataBind();
-            
+
+            if(seleccionado.Estado.Nombre == "Cerrado" || seleccionado.Estado.Nombre == "Resuelto")
+            {
+                btnResponderTicket2.Visible = false;
+            }
+            else
+            {
+                btnResponderTicket2.Visible = true;
+
+            }
+
+            if(seleccionado.Estado.Nombre == "Abierto")
+            {
+                btnReabrir.Visible = false;
+            }
+
 
         }
 
@@ -45,14 +60,90 @@ namespace TP_Final_Benitez
 
         protected void MostrarOcultarRespuestas(bool estado)
         {
+            btnEnviarRespuestaTicket.Visible = estado;
             btnCancelarRespuestaTicket.Visible = estado;
             txtRespuestaTicket.Visible = estado;
-            btnEnviarRespuestaTicket.Visible = estado;
+
+            if(Session["agente"] == null)
+            {
+                btnEnviarRespuestaTicketResuelto.Visible = false;
+                btnEnviarRespuestaTicketPendiente.Visible = false;
+                btnEnviarRespuestaTicketCerrado.Visible = false;
+            }
+            else
+            {
+                btnEnviarRespuestaTicket.Visible = estado;
+                btnEnviarRespuestaTicketResuelto.Visible = estado;
+                btnEnviarRespuestaTicketPendiente.Visible = estado;
+                btnEnviarRespuestaTicketCerrado.Visible = estado;
+            }
         }
 
         protected void btnEnviarRespuestaTicket_Click(object sender, EventArgs e)
         {
+            enviarRespuesta();
+        }
 
+        protected void btnVolverAtras_Click(object sender, EventArgs e)
+        {
+
+            if(Session["agente"]!= null)
+            {
+                Agente aux = new Agente();
+                aux = (Agente)Session["agente"];
+
+                if(aux.Tipo.IdTipo == 2)
+                    Response.Redirect("SupervisorDashboard.aspx");
+                else
+                    Response.Redirect("AgenteDashboard.aspx");
+
+            }else if (Session["usuario"] != null)
+            {
+                Response.Redirect("MenuUsuario.aspx");
+
+            }
+        }
+
+        protected void btnEnviarRespuestaTicketResuelto_Click(object sender, EventArgs e)
+        {
+            TicketNegocio negocio = new TicketNegocio();
+            negocio.CambiarEstado(seleccionado.TicketID, 3);
+
+            EmailService emailService = new EmailService();
+            string asunto = "Ticket #" + seleccionado.TicketID.ToString() +" Ha sido resuelto";
+            string EmailDestino = seleccionado.Contacto;
+            string cuerpo = "Los tecnicos informan que su ticket ha sido resuelto con el siguiente comentario: " + txtRespuestaTicket.Text;
+
+            emailService.armarCorreo(EmailDestino, asunto, cuerpo);
+            try
+            {
+                emailService.EnviarEmail();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            enviarRespuesta();
+
+        }
+
+        protected void btnEnviarRespuestaTicketPendiente_Click(object sender, EventArgs e)
+        {
+            TicketNegocio negocio = new TicketNegocio();
+            negocio.CambiarEstado(seleccionado.TicketID, 4);
+            enviarRespuesta();
+        }
+
+        protected void btnEnviarRespuestaTicketCerrado_Click(object sender, EventArgs e)
+        {
+            TicketNegocio negocio = new TicketNegocio();
+            negocio.CambiarEstado(seleccionado.TicketID, 2);
+            enviarRespuesta();
+        }
+
+        private void enviarRespuesta()
+        {
             TicketRespuesta respuesta = new TicketRespuesta();
             TicketRespuestaNegocio negocio = new TicketRespuestaNegocio();
 
@@ -65,16 +156,17 @@ namespace TP_Final_Benitez
 
 
 
-            if(Session["agente"]!= null)
+            if (Session["agente"] != null)
             {
                 Agente aux = new Agente();
                 aux = (Agente)Session["agente"];
                 respuesta.Emisor = aux.IdAgente; ;
                 respuesta.EsAgente = true;
 
-               
 
-            }else if (Session["usuario"] != null)
+
+            }
+            else if (Session["usuario"] != null)
             {
                 Usuario aux = new Usuario();
                 aux = (Usuario)Session["usuario"];
@@ -84,21 +176,15 @@ namespace TP_Final_Benitez
             lblSuccesRespuesta.Visible = true;
             negocio.InsertarNueva(respuesta);
             Response.Redirect(Request.RawUrl);
-
-
         }
 
-        protected void btnVolverAtras_Click(object sender, EventArgs e)
+        protected void btnReabrir_Click(object sender, EventArgs e)
         {
-
-            if(Session["agente"]!= null)
-            {
-                Response.Redirect("AgenteDashboard.aspx");
-            }else if (Session["usuario"] != null)
-            {
-                Response.Redirect("MenuUsuario.aspx");
-
-            }
+            TicketNegocio negocio = new TicketNegocio();
+            negocio.CambiarEstado(seleccionado.TicketID, 1);
+            btnReabrir.Visible = false;
+            Response.Redirect(Request.RawUrl);
         }
+
     }
 }

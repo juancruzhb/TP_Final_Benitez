@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
 
 namespace TP_Final_Benitez
 {
@@ -13,9 +14,17 @@ namespace TP_Final_Benitez
         {
             if (Session["agente"] != null)
             {
-                btnBuscar.Visible = true;
-                btnlogout.Visible = true;
-                txtBuscas.Visible = true;
+                Agente agente = (Agente)Session["agente"];
+                if(agente.Tipo.IdTipo == 2)
+                {
+                    btnSupervisorDashboard.Enabled = true;
+
+                }
+            }
+            else
+            {
+                btnSupervisorDashboard.Enabled = false;
+
             }
 
         }
@@ -26,5 +35,24 @@ namespace TP_Final_Benitez
             Response.Redirect("login.aspx");
         }
 
+        protected void btnSupervisorDashboard_Click(object sender, EventArgs e)
+        {
+            Agente agente = (Agente)Session["agente"];
+
+            if(agente.Tipo.IdTipo == 2)
+            {
+                Response.Redirect("SupervisorDashboard.aspx");
+            }
+            else
+            {
+                btnSupervisorDashboard.Enabled = false;
+            }
+
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgenteDashboard.aspx?q=" + txtSearch.Text, false);
+        }
     }
 }

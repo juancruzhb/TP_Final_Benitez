@@ -78,9 +78,20 @@ namespace TP_Final_Benitez
                 nuevo.oPrioridad = listaPrioridades.Find(x => x.IdPrioridad.Equals(int.Parse(ddlPrioridades.SelectedValue)));
                 nuevo.oCategoria = listaCategorias.Find(x => x.IdCategoria.Equals(int.Parse(ddlCategorias.SelectedValue)));
 
-                if (tNegocio.InsertarNuevo(nuevo) >0)
+                int numeroTicket = tNegocio.InsertarNuevo(nuevo);
+                if (numeroTicket > 0)
                 {
+
                     Response.Redirect("TicketSuccess.aspx", false);
+
+                    EmailService emailService = new EmailService();
+                    string emailDestino = "bhjuancruz@gmail.com";
+                    string asunto = "Ticket #" + numeroTicket.ToString();
+                    string body = "Cuerpo del ticket" + txtMensaje.Text;
+
+                    emailService.armarCorreo(emailDestino, asunto, body);
+                    emailService.EnviarEmail();
+
                 }
                 
             }
@@ -90,6 +101,9 @@ namespace TP_Final_Benitez
 
                 throw ex;
             }
+
+
+
         }
 
         private List<Categoria> filtrarListaCategoria(List<Categoria> categorias)

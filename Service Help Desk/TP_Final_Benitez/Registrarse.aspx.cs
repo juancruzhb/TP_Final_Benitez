@@ -49,6 +49,18 @@ namespace TP_Final_Benitez
                 }
             }
 
+            EmailService emailService = new EmailService();
+            emailService.armarCorreo(txtCorreo.Text, "Gracias por Registrarse", "prueba");
+            try
+            {
+                emailService.EnviarEmail();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }

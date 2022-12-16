@@ -88,6 +88,8 @@
                     </div>
                     <div>
                         <asp:Button Text="Responder" CssClass="btn btn-primary" ID="btnResponderTicket2" runat="server" OnClick="btnResponderTicket2_Click" UseSubmitBehavior="false" />
+                        <asp:Button Text="Reabrir" CssClass="btn btn-primary" ID="btnReabrir" runat="server" OnClick="btnReabrir_Click" UseSubmitBehavior="false" />
+
                     </div>
                 </div>
                 <div class="mensaje">
@@ -138,6 +140,9 @@
             <div class="container">
                 <asp:TextBox TextMode="MultiLine" CssClass="form form-control" runat="server" Visible="false" ID="txtRespuestaTicket" CausesValidation="false" />
                 <asp:Button Text="Enviar" CssClass="btn btn-primary" runat="server" Visible="false" ID="btnEnviarRespuestaTicket" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicket_Click" />
+                <asp:Button Text="Enviar (Resuelto)" CssClass="btn btn-success" runat="server" Visible="false" ID="btnEnviarRespuestaTicketResuelto" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicketResuelto_Click" />
+                <asp:Button Text="Enviar (Pendiente)" CssClass="btn btn-warning" runat="server" Visible="false" ID="btnEnviarRespuestaTicketPendiente" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicketPendiente_Click" />
+                <asp:Button Text="Enviar (Cerrado)" CssClass="btn btn-danger" runat="server" Visible="false" ID="btnEnviarRespuestaTicketCerrado" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicketCerrado_Click"  />
                 <asp:Button Text="Cancelar" CssClass="btn btn-success" runat="server" Visible="false" ID="btnCancelarRespuestaTicket" OnClick="btnCancelarRespuestaTicket_Click" UseSubmitBehavior="false" />
                 <asp:Label Text="Se ha enviado la respuesta correctamente" ID="lblSuccesRespuesta" CssClass="alert-success" Visible="false" runat="server" />
             </div>

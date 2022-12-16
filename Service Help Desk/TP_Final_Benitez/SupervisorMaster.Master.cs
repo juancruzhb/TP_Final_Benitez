@@ -19,5 +19,11 @@ namespace TP_Final_Benitez
             Session.Abandon();
             Response.Redirect("login.aspx");
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SupervisorDashboard.aspx?q=" + txtSearch.Text, false);
+
+        }
     }
 }

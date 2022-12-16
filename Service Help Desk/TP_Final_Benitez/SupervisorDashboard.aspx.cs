@@ -28,9 +28,14 @@ namespace TP_Final_Benitez
                     Response.Redirect("Error.aspx");
                 }
             }
+            if (Request.QueryString["q"] != null)
+            {
+                string busqueda = Request.QueryString["q"];
+                cargarTickets(0, busqueda);
 
+            }
         }
-        private void cargarTickets(int estado)
+        private void cargarTickets(int estado, string search = null)
         {
             List<Ticket> aux = new List<Ticket>();
             List<Ticket> tickets = new List<Ticket>();
@@ -38,11 +43,20 @@ namespace TP_Final_Benitez
 
             aux = tNegocio.listar();
 
-            foreach (var ticket in aux)
+            if (search != null && estado == 0)
             {
-                if (ticket.Estado.IdEstado == estado)
-                    tickets.Add(ticket);
+                gvTickets.Columns[10].Visible = false;
+                tickets = aux.FindAll(x => x.TicketID.ToString() == search || x.Asunto.ToLower().Contains(search.ToLower()));
             }
+            else
+            {
+                foreach (var ticket in aux)
+                {
+                    if (ticket.Estado.IdEstado == estado)
+                        tickets.Add(ticket);
+                }
+            }
+
 
             gvTickets.DataSource = tickets;
             gvTickets.DataBind();

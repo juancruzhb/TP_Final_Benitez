@@ -19,10 +19,20 @@ namespace TP_Final_Benitez
                 Session.Add("error", "Debes estar logueado para enviar acceder al menú");
                 Response.Redirect("Error.aspx");
             }
+            else
+            {
+                aux = (Agente)Session["Agente"];
+            }
 
+            if (Request.QueryString["q"] != null)
+            {
+                string busqueda = Request.QueryString["q"];
+                cargarTickets(0,aux.IdAgente, busqueda);
+
+            }
         }
 
-        private void cargarTickets(int estado, int IdAgente)
+        private void cargarTickets(int estado, int IdAgente, string search = null)
         {
             List<Ticket> aux = new List<Ticket>();
             List<Ticket> tickets = new List<Ticket>();
@@ -30,15 +40,16 @@ namespace TP_Final_Benitez
 
             aux = tNegocio.listar();
 
-            foreach (var ticket in aux)
+            if (search != null && estado == 0)
             {
-                if(ticket.IdAgenteAsignado != 0)
+                tickets = aux.FindAll(x => (x.TicketID.ToString() == search || x.Asunto.ToLower().Contains(search.ToLower()))&& x.AgenteAsignado.IdAgente == IdAgente);
+            }
+            else
+            {
+                foreach (var ticket in aux)
                 {
-                    if (ticket.Estado.IdEstado == estado && ticket.IdAgenteAsignado == IdAgente)
-                    {
-                         tickets.Add(ticket);
-                    }
-
+                        if (ticket.Estado.IdEstado == estado && ticket.IdAgenteAsignado == IdAgente)
+                             tickets.Add(ticket);
                 }
             }
 
@@ -122,11 +133,14 @@ namespace TP_Final_Benitez
             }
 
             TicketRespuestaNegocio n = new TicketRespuestaNegocio();
-            if (!n.VerificaLectura(Convert.ToInt16(DataBinder.Eval(e.Row.DataItem, "TicketId")), true))
+            int idticket = Convert.ToInt16(DataBinder.Eval(e.Row.DataItem, "TicketId"));
+            if (!n.VerificaLectura(idticket, true))
             {
                 e.Row.BackColor = System.Drawing.Color.LightGreen;
 
             }
+
+
         }
     }
 }
