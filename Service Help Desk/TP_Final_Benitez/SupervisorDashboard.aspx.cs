@@ -104,10 +104,10 @@ namespace TP_Final_Benitez
                 DropDownList ddlAgentes = (e.Row.FindControl("ddlAgentes") as DropDownList);
                 ddlAgentes.Visible = true;
                 ddlAgentes.DataSource = agentes;
-                ddlAgentes.DataTextField = "Apellido";
+                ddlAgentes.DataTextField = "NombreApellido";
                 ddlAgentes.DataValueField = "IdAgente";
                 ddlAgentes.DataBind();
-                ddlAgentes.Items.Insert(0, new ListItem("Sin Asignar"));
+                ddlAgentes.Items.Insert(0, new ListItem(""));
 
             }
 
@@ -116,7 +116,7 @@ namespace TP_Final_Benitez
         protected void btnAbiertos_Click(object sender, EventArgs e)
         {
             gvTickets.Columns[9].Visible = false;
-            gvTickets.Columns[10].Visible = false;
+            gvTickets.Columns[10].Visible = true;
             gvTickets.Columns[7].Visible = true;
 
             cargarTickets(1);
@@ -150,7 +150,7 @@ namespace TP_Final_Benitez
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
             gvTickets.Columns[9].Visible = false;
-            gvTickets.Columns[10].Visible = false;
+            gvTickets.Columns[10].Visible = true;
             gvTickets.Columns[7].Visible = true;
             gvTickets.Columns[11].Visible = true;
             gvTickets.Columns[13].Visible = true;

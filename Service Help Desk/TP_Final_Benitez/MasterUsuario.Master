@@ -23,9 +23,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="NuevoTicket.aspx">Nuevo Ticket</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Modificar mi perfil</a>
-                        </li>
                     </ul>
                     <form class="d-flex" role="search">
                         <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control me-2" Width="30%" TextMode="Search" placeholder="Buscar Ticket"></asp:TextBox>

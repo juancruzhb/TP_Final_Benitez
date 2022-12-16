@@ -123,6 +123,8 @@ namespace Negocio
             AgenteNegocio aNegocio = new AgenteNegocio();
             CategoriaNegocio cNegocio = new CategoriaNegocio();
             PrioridadNegocio pNegocio = new PrioridadNegocio();
+            UsuarioNegocio uNegocio = new UsuarioNegocio();
+            List<Usuario> usuarios = new List<Usuario>();
             Agente aux = new Agente();
             aux.Nombre = "Sin asignar";
 
@@ -130,6 +132,7 @@ namespace Negocio
             prioridades = pNegocio.listar();
             estados = eNegocio.listar();
             agentes = aNegocio.listar();
+            usuarios = uNegocio.listar();
 
             try
             {
@@ -150,6 +153,7 @@ namespace Negocio
                     ticket.oCategoria = categorias.Find(x => x.IdCategoria.Equals((int)datos.Reader["IdCategoria"]));
                     ticket.oPrioridad = prioridades.Find(x => x.IdPrioridad.Equals((int)datos.Reader["IdPrioridad"]));
                     ticket.Estado = estados.Find(x => x.IdEstado.Equals((int)datos.Reader["IdEstado"]));
+                    ticket.User = usuarios.Find(x => x.IdUsuario.Equals((int)datos.Reader["IdUsuario"]));
                     ticket.AgenteAsignado = datos.Reader["IdAgente"] != (object)DBNull.Value ? agentes.Find(x => x.IdAgente.Equals((int)datos.Reader["IdAgente"])):aux;
                 }
                 return ticket;

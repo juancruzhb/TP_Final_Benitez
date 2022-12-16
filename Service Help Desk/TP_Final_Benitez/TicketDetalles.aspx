@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="container" style="border: 2px solid grey; ">
+            <div class="container" style="border: 2px solid grey;">
                 <div class="uno">
                     <h3><%:seleccionado.Asunto%></h3>
                     <div class="dos">
@@ -42,10 +42,34 @@
                         <div class="tres">
                             <div class="cuatro">
                                 <div class="cinco">
-                                    <span>Categoria</span>
+                                    <span>Usuario</span>
                                 </div>
                                 <div class="cinco">
-                                    <span><%:seleccionado.oCategoria.Nombre%></span>
+                                    <span><%:seleccionado.User.NombreApellido%></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dos">
+                        <div class="tres">
+                            <div class="cuatro">
+                                <div class="cinco">
+                                    <span>Email</span>
+                                </div>
+                                <div class="cinco">
+                                    <span><%:seleccionado.User.Email%></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dos">
+                        <div class="tres">
+                            <div class="cuatro">
+                                <div class="cinco">
+                                    <span>Contacto</span>
+                                </div>
+                                <div class="cinco">
+                                    <span><%:seleccionado.Contacto%></span>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +126,7 @@
             </div>
             <asp:Repeater runat="server" ID="rpRespuestas">
                 <ItemTemplate>
-                    <div class="container"  <%#(bool)Eval("EsAgente") == true ? "style= 'border: 2px solid grey; margin-bottom:25px; margin-right:20px; background-color:darkslategrey'" : "style = 'border: 2px solid grey; margin-bottom:25px; margin-left:20px;'"%> >
+                    <div class="container" <%#(bool)Eval("EsAgente") == true ? "style= 'border: 2px solid grey; margin-bottom:25px; margin-right:20px; background-color:darkslategrey'" : "style = 'border: 2px solid grey; margin-bottom:25px; margin-left:20px;'"%>>
                         <div class="uno">
                             <h3><%:seleccionado.Asunto%></h3>
                             <div class="dos">
@@ -128,8 +152,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>              
-                            
+                            </div>
+
                         </div>
                         <div class="mensaje">
                             <span class="spanMensaje"><%#Eval("Respuesta")%></span>
@@ -142,12 +166,12 @@
                 <asp:Button Text="Enviar" CssClass="btn btn-primary" runat="server" Visible="false" ID="btnEnviarRespuestaTicket" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicket_Click" />
                 <asp:Button Text="Enviar (Resuelto)" CssClass="btn btn-success" runat="server" Visible="false" ID="btnEnviarRespuestaTicketResuelto" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicketResuelto_Click" />
                 <asp:Button Text="Enviar (Pendiente)" CssClass="btn btn-warning" runat="server" Visible="false" ID="btnEnviarRespuestaTicketPendiente" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicketPendiente_Click" />
-                <asp:Button Text="Enviar (Cerrado)" CssClass="btn btn-danger" runat="server" Visible="false" ID="btnEnviarRespuestaTicketCerrado" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicketCerrado_Click"  />
+                <asp:Button Text="Enviar (Cerrado)" CssClass="btn btn-danger" runat="server" Visible="false" ID="btnEnviarRespuestaTicketCerrado" UseSubmitBehavior="false" OnClick="btnEnviarRespuestaTicketCerrado_Click" />
                 <asp:Button Text="Cancelar" CssClass="btn btn-success" runat="server" Visible="false" ID="btnCancelarRespuestaTicket" OnClick="btnCancelarRespuestaTicket_Click" UseSubmitBehavior="false" />
                 <asp:Label Text="Se ha enviado la respuesta correctamente" ID="lblSuccesRespuesta" CssClass="alert-success" Visible="false" runat="server" />
             </div>
             <div>
-                <asp:Button Text="VOLVER ATRAS" CssClass="btn btn-primary btn-lg" runat="server" id="btnVolverAtras" OnClick="btnVolverAtras_Click"/>
+                <asp:Button Text="VOLVER ATRAS" CssClass="btn btn-primary btn-lg" runat="server" ID="btnVolverAtras" OnClick="btnVolverAtras_Click" />
             </div>
         </div>
     </form>

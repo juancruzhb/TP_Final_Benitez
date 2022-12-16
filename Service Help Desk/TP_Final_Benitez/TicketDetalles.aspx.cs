@@ -40,7 +40,7 @@ namespace TP_Final_Benitez
 
             }
 
-            if(seleccionado.Estado.Nombre == "Abierto")
+            if(seleccionado.Estado.Nombre == "Abierto" || seleccionado.Estado.Nombre == "Pendiente")
             {
                 btnReabrir.Visible = false;
             }
@@ -111,7 +111,7 @@ namespace TP_Final_Benitez
 
             EmailService emailService = new EmailService();
             string asunto = "Ticket #" + seleccionado.TicketID.ToString() +" Ha sido resuelto";
-            string EmailDestino = seleccionado.Contacto;
+            string EmailDestino = seleccionado.User.Email;
             string cuerpo = "Los tecnicos informan que su ticket ha sido resuelto con el siguiente comentario: " + txtRespuestaTicket.Text;
 
             emailService.armarCorreo(EmailDestino, asunto, cuerpo);

@@ -26,8 +26,8 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <asp:Label ID="Label1" CssClass="form-label"  Text="Email de Contacto" runat="server" />
-                    <asp:TextBox TextMode="Email" ID="txtContacto" Width="30%" CssClass="form-control" Rows="3" runat="server" />
+                    <asp:Label ID="Label1" CssClass="form-label"  Text="Telefono de Contacto" runat="server" />
+                    <asp:TextBox TextMode="Phone" ID="txtContacto" Width="30%" CssClass="form-control" Rows="3" runat="server" />
                 </div>
                 <div class="mb-3">
                     <asp:Label ID="lblDescripcion" CssClass="form-label" Text="Descripcion" runat="server" />

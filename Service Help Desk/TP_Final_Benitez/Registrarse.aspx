@@ -42,6 +42,9 @@
                     <asp:Button Text="Confirmar" runat="server" CssClass="btn btn-primary" ID="btnConfirmarRegistro"  OnClick="btnConfirmarRegistro_Click" />
                     <a href="Login.aspx" class="btn btn-danger">Cancelar</a>
                 </div>
+                <div>
+                    <asp:Label ID="lblRedirigiendo" runat="server" />
+                </div>
             </div>
         </div>
     </form>
